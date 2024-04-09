@@ -1,0 +1,57 @@
+.bg-color-navbar{
+    background: #000000;
+    
+}
+.nav-color{
+    color: rgb(255, 255, 255);
+    font-style: oblique;
+    padding-left: 2rem;
+    
+}
+.perfil-button{
+    padding-top: 1rem;
+    padding-right: 1rem;
+    
+}
+.carrito{
+    margin: 0%;
+    padding: 0%;
+}
+.banner-img {
+    background-image: url('img/banner.png'); /* Ruta a tu imagen de fondo */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el div */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    /* Otros estilos según necesites */
+}
+
+.banner-text{
+    padding: 1rem;
+    margin-left: 4rem;
+}
+.banner-button{
+    padding: 1rem;
+    margin-left: 6rem;
+}
+.home-page-cards{
+    padding: 3rem;
+}
+.col-space{
+    padding-left: 10%;
+}
+.top-pad{
+    padding-top: 2rem;
+}
+.btn-ingreso{
+    width: 15rem;
+}
+.ingreso-titulo{
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+}
+.login-form{
+  width: 15rem;
+    
+}
+.login-title{
+    padding-bottom: 4rem;
+}
