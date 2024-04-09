@@ -33,6 +33,6 @@ class RegisterController extends Controller
         $cliente->save();
 
         // Redirige a la página de inicio o a donde desees
-        return redirect('/login');
+        return redirect('/LogIn');
     }
 }
