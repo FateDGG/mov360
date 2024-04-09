@@ -29,7 +29,7 @@
     <body>
         <nav class="navbar navbar-expand-lg bg-color-navbar">
             <div class="container">
-                <a class="navbar-brand " href="{{ url('/home') }}">
+                <a class="navbar-brand " href="{{ url('/') }}">
                     <img src="{{ asset('img/logo2.png') }}" alt="MOV360" width="160" height="36">
                   </a>
              

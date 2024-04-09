@@ -28,3 +28,6 @@ Route::get('/LogIn', function () {
 Route::get('/Register', function () {
     return view('registro');
 });
+
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register.post');
