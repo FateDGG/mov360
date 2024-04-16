@@ -26,7 +26,7 @@
         </div>
         <ul class="nav">
             <li class="nav-item perfil-button">
-                <a class="nav-color" href="{{ url('/Ingreso') }}">Ingresar</a>
+                <a class="nav-color" href="{{ url('/LogIn') }}">Ingresar</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
