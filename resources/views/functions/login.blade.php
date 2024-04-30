@@ -6,7 +6,7 @@
 
   <div class="container ingreso-titulo ">
     <h1 class="login-title">
-      Ingrese sus datos para continuar
+      Ingrese sus credenciales
     </h1>
     @if (session('error'))
     <div id="popup" class="alert alert-danger" role="alert">
