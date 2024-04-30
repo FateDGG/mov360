@@ -31,5 +31,13 @@
        @include("components.navbar") 
         @include("components.homepage")
        @extends("components.footer")  
+       <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica si hay un mensaje de confirmación y muestra el popup
+            @if(session('success'))
+                alert("{{ session('success') }}");
+            @endif
+        });
+    </script>
     </body>
 </html>

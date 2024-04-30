@@ -8,18 +8,24 @@
     <h1 class="login-title">
       Ingrese sus datos para continuar
     </h1>
-    <form>
+    @if (session('error'))
+    <div id="popup" class="alert alert-danger" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
+    <form action="{{ route('login') }}" method="post">
+      @csrf <!-- Agrega el token CSRF -->
       <div class="container p-4 login-form">
-        <h3><label for="exampleInputEmail1" class="form-label">Ingresa tu numero o correo</label></h3>
-        <input type="email" class="form-control container" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 20rem">
+          <h3><label for="email" class="form-label">Ingresa tu número o correo</label></h3>
+          <input type="text" class="form-control container" id="email" name="email" aria-describedby="emailHelp" style="width: 20rem">
       </div>
       <div class="container p-2 login-form">
-        <h3><label for="exampleInputPassword1" class="form-label">Password</label></h3>
-        <input type="password" class="container form-control" id="exampleInputPassword1" style="width: 20rem;">
+          <h3><label for="password" class="form-label">Contraseña</label></h3>
+          <input type="password" class="container form-control" id="password" name="password" style="width: 20rem;">
       </div>
       <div class="container p-5 login-form">
-      <a href="{{ url('/home') }}"><button type="submit" class="btn btn-primary">Ingresar</button></a>
-    </div>
-    </form>
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+      </div>
+  </form>
   </div>
 </div>
