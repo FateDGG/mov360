@@ -12,28 +12,13 @@
       </h1>
     </div>
     <div class="container p-2">
-      <h1>
-        <a href=""><button type="button" class="btn btn-primary btn-ingreso btn-rounded" data-mdb-ripple-init>Ingresa con facebook</button>
-      </h1>
-    </div>
-    <div class="container p-2">
-      <h1>
-        <a href=""><button type="button" class="btn btn-success btn-ingreso btn-rounded" data-mdb-ripple-init>Ingresa con tu numero</button>
-      </h1>
-    </div>
-    <div class="container p-2">
-      <h1>
-        <a href=""><button type="button" class="btn btn-info btn-ingreso btn-rounded" data-mdb-ripple-init>Ingresar con gmail</button>
-      </h1>
-    </div>
-    <div class="container p-2">
         <h1>
-            <a href="{{ url('/Register') }}"><button type="button" class="btn btn-warning  btn-ingreso btn-rounded" data-mdb-ripple-init>Ingresa con correo</button>
+            <a href="{{ url('/Register') }}"><button type="button" class="btn btn-warning  btn-ingreso btn-rounded" data-mdb-ripple-init>Registrarme</button>
         </h1>
       </div>
     <div class="container p-2">
       <h1>
-        <a href="{{ url('/LogIn') }}"><button type="button" class="btn btn-dark btn-ingreso btn-rounded" data-mdb-ripple-init>Ya tengo cuenta</button></a>
+        <a href="{{ url('/LogIn') }}"><button type="button" class="btn btn-dark btn-ingreso btn-rounded" data-mdb-ripple-init>Ya tengo una cuenta</button></a>
       </h1>
     </div>
     
