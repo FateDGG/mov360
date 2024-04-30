@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col top-pad">
         <div class="card" style="width: 8rem;height 15rem;">
-            <img src="{{ asset('img/comidarapida.jpeg') }}" class="card-img-top" alt="...">
+            <a href="https://www.pidegaraje.com/"><img src="{{ asset('img/comidarapida.jpeg') }}" class="card-img-top" alt="..."></a>
             <div class="card-body">
                 <p class="card-text">Rapida</p>
             </div>
@@ -20,7 +20,7 @@
       </div>
       <div class="col top-pad">
         <div class="card" style="width: 8rem;height 15rem;">
-            <img src="{{ asset('img/comidaitaliana.jpeg') }}" class="card-img-top" alt="...">
+            <a href="https://www.trattoria.com.co/"><img src="{{ asset('img/comidaitaliana.jpeg') }}" class="card-img-top" alt="..."></a>
             <div class="card-body">
                 <p class="card-text">Italiana</p>
             </div>
@@ -28,7 +28,7 @@
       </div>
       <div class="col top-pad">
         <div class="card" style="width: 8rem;height 15rem;">
-            <img src="{{ asset('img/comidachina.jpeg') }}" class="card-img-top" alt="...">
+            <a href="https://srwok.com/"><img src="{{ asset('img/comidachina.jpeg') }}" class="card-img-top" alt="..."></a>
             <div class="card-body">
                 <p class="card-text">China</p>
             </div>

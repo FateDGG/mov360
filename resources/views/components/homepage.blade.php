@@ -6,7 +6,7 @@
     <h5 class="banner-text">
         Registrate y obten descuentos especiales en tus primeros servicios
     </h5>
-        <button class="btn btn-primary banner-button" type="button">Registrate</button>
+        <a href="{{ url('/Ingreso') }}"><button class="btn btn-primary banner-button" type="button">Registrate</button></a>
     </div>
 </div>
 <div class="container text-center home-page-cards">
@@ -15,7 +15,7 @@
     <div class="row home-page-cards col-space">
       <div class="col e">
         <div class="card" style="width: 18rem;height: 24rem;">
-            <img src="{{ asset('img/domicilios.png') }}" class="card-img-top" alt="...">
+            <a href="{{ url('/Domicilios') }}"><img src="{{ asset('img/domicilios.png') }}" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <p class="card-text">Pide comida en tu restaurante favorito y recibla en la puerta de tu casa</p>
             </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="col ">
         <div class="card" style="width: 18rem; height: 24rem;">
-            <img src="{{ asset('img/Transporte.jpeg') }}" class="card-img-top" alt="...">
+            <a href="{{ url('/Solicitar_Transporte') }}"><img src="{{ asset('img/Transporte.jpeg') }}" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <p class="card-text">¿Necetas ir a algun lado? Pide aqui un transporte seguro y rapido</p>
             </div>
@@ -31,7 +31,7 @@
       </div>
       <div class="col ">
         <div class="card" style="width: 18rem;height: 24rem;">
-            <img src="{{ asset('img/renta.png') }}" class="card-img-top" alt="...">
+            <a href="{{ url('/Alquilar_Vehiculo') }}"><img src="{{ asset('img/renta.png') }}" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <p class="card-text">¿Necesitas un vehiculo? Renta uno para desplazarte mas facilmente</p>
             </div>
