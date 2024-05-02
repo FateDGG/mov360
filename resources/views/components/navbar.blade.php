@@ -25,9 +25,15 @@
            
         </div>
         <ul class="nav">
-            <li class="nav-item perfil-button">
-                <a class="nav-color" href="{{ url('/Ingreso') }}">Ingresar</a>
-            </li>
+            @guest <!-- Comprueba si el usuario no está autenticado -->
+                <li class="nav-item perfil-button">
+                    <a class="nav-color" href="{{ url('/Ingreso') }}">Ingresar</a>
+                </li>
+            @else <!-- Si el usuario está autenticado -->
+                <li class="nav-item perfil-button">
+                    <a class="nav-color" href="{{ url('/Profile') }}"> {{ Auth::user()->nombre }}</a>
+                </li>
+            @endguest
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <img src="{{ asset('img/logoMOV360.png') }}" alt="MOV360" width="45" height="41">

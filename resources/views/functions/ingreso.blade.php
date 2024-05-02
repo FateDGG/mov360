@@ -8,12 +8,12 @@
 
     <div class="container ingreso-titulo">
       <h1>
-        Registrese o ingrese para continuar
+        Registrarse <br>o<br> Iniciar sesión
       </h1>
     </div>
     <div class="container p-2">
         <h1>
-            <a href="{{ url('/Register') }}"><button type="button" class="btn btn-warning  btn-ingreso btn-rounded" data-mdb-ripple-init>Registrarme</button>
+            <a href="{{ url('/Register') }}"><button type="button" class="btn btn-dark  btn-ingreso btn-rounded" data-mdb-ripple-init>Registrarme</button>
         </h1>
       </div>
     <div class="container p-2">
