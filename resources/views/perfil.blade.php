@@ -27,7 +27,20 @@
     </head>
     <body>
        @include("components.navbar") 
-        @include("components.transportes")
+       <div class="container mt-5">
+            <h1>Perfil de Usuario</h1>
+            @auth <!-- Verifica si el usuario está autenticado -->
+                <p>Nombre: {{ Auth::user()->nombre }}</p>
+                <p>Correo Electrónico: {{ Auth::user()->email }}</p>
+                <!-- Agrega más campos de información del usuario aquí según tu necesidad -->
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                </form>
+            @else
+                <p>Por favor, inicia sesión para ver tu perfil.</p>
+            @endauth
+        </div>
        @extends("components.footer")  
     </body>
 </html>

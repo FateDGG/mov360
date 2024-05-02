@@ -27,5 +27,15 @@ class LoginController extends Controller
         return redirect()->back()->with('error', 'Credenciales incorrectas');
 
     }
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Cierra la sesión del usuario
+
+        $request->session()->invalidate(); // Invalida la sesión actual
+
+        $request->session()->regenerateToken(); // Regenera el token de sesión
+
+        return redirect('/'); // Redirige a la página de inicio u otra página según tu aplicación
+    }
 
 }

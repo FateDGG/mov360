@@ -37,3 +37,4 @@ Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('r
 Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register.post');
 
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
+Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');

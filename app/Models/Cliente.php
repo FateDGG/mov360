@@ -12,4 +12,9 @@ class Cliente extends Model
     protected $fillable = [
         'nombre', 'telefono', 'email', 'password',
     ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 }
