@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="col-md-9 pt-6">
-                            @include("components.profileInfo") 
+                            @include("components.infoTarjetas") 
                         </div>
                     </div>
                 </div>
