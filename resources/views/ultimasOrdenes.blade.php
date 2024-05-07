@@ -7,6 +7,7 @@
         <title>MOV360</title>
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="">
+        <script src="{{ asset('scripts/custom.js') }}"></script>
         <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         rel="stylesheet"
@@ -27,10 +28,37 @@
     </head>
     <body>
        @include("components.navbar") 
-       <div style="background-image: url('{{ asset('img/bannerTransporte.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
-    
-        @include("components.transportes")
-       </div>
+
+          
+            @auth <!-- Verifica si el usuario está autenticado -->
+                
+                <!-- Agrega más campos de información del usuario aquí según tu necesidad -->
+                <div class="container mt-5 pb-5">
+                    <div class="row">
+                        <div class="col-md-3 col-9">
+                            @include("components.profileImage") 
+                            <div class="col-md-9 pt-6">
+
+                            </div>
+                        </div>
+                        <div class="w-100 d-none d-md-block"></div>
+                        <div class="col-md-3 col-9">
+                            <div class="d-flex flex-column align-items-center text-center ">
+                                @include("components.profileBar") 
+                            </div>
+                        </div>
+                        <div class="col-md-9 pt-6">
+                            @include("components.infoOrdenes") 
+                        </div>
+                    </div>
+                </div>
+                
+            @else
+                <h1>Perfil De Usuario</h1>
+                <p>Por favor, inicia sesión para ver tu perfil.</p>
+            @endauth
+        </div>
+
        @extends("components.footer")  
     </body>
 </html>
