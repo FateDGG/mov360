@@ -37,10 +37,9 @@
                     <div class="row">
                         <div class="col-md-3 col-9">
                             @include("components.profileImage") 
-                            <div class="col-md-9 pt-6">
-
-                            </div>
+                            
                         </div>
+
                         <div class="w-100 d-none d-md-block"></div>
                         <div class="col-md-3 col-9">
                             <div class="d-flex flex-column align-items-center text-center ">

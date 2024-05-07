@@ -37,7 +37,7 @@
                     <div class="row">
                         <div class="col-md-3 col-9">
                             @include("components.profileImage") 
-                            <div class="col-md-9 pt-6">
+                            <div class="col-md-9 pt-6 ">
 
                             </div>
                         </div>
