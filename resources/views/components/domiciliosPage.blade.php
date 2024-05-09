@@ -177,7 +177,8 @@
     <div class="container text-center">
         <div class="row">
           @foreach($restaurantes as $restaurante)
-          <div class="col top-pad">
+            <div class="col pb-4 pt-4">@include("components.restauranteCard", ['restaurantes' => $restaurantes])</div>
+          {{-- <div class="col top-pad">
               <div class="card" style="width: 20rem;">
                   <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
                   <div class="card-body">
@@ -185,14 +186,10 @@
                       <!-- Puedes mostrar más información del restaurante aquí -->
                   </div>
               </div>
-          </div>
+          </div> --}}
           @endforeach
-        <div class="row row-cols-3 pb-2">
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-        </div>
+        {{-- <div class="row row-cols-3 pb-2">
+          <div class="col pb-4 pt-4">@include("components.restauranteCard", ['restaurantes' => $restaurantes])</div>
+        </div> --}}
       </div>
 </div>
