@@ -75,7 +75,7 @@
 </div>
 
 <div class="container text-center">
-    <div class="row row row-cols-4 pb-2">
+    <div class="row row-cols-4 pb-2">
       <div class="col pb-4 pt-4">@include("components.carCard")</div>
       <div class="col pb-4 pt-4">@include("components.carCard")</div>
       <div class="col pb-4 pt-4">@include("components.carCard")</div>
