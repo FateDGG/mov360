@@ -1,6 +1,6 @@
 
 
-  <div style="background-image: url('{{ asset('img/banner.png') }}'); background-size: cover; background-repeat: no-repeat; height: 550px; display: flex; justify-content: center; align-items: center;">
+  <div style="background-image: url('{{ asset('img/banner.png') }}'); background-size: cover; background-repeat: no-repeat; height: 550px; display: flex; justify-content: center; align-items: center;"class="img-fluid">
     <div class="container banner" style="max-width: 80%;">
         <h1 class="banner-text">¡Adquiere un 10% de descuento!</h1>
     <h5 class="banner-text">
