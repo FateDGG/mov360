@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestaurantesController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/Domicilios', function () {
     return view('domicilios');
+});
+
+Route::get('/DomPage', function () {
+    return view ('components/domiciliosPage');
 });
 
 Route::get('/Alquilar_Vehiculo', function () {
@@ -43,3 +48,5 @@ Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register'
 
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+Route::get('/Domicilios', 'App\Http\Controllers\RestaurantesController@showRestaurants')->name('restaurantes');
