@@ -30,6 +30,9 @@ class RegisterController extends Controller
         $cliente->telefono = $request->input('telefono');
         $cliente->email = $request->input('email');
         $cliente->password = bcrypt($request->input('password'));
+        $cliente->documento = null;
+        $cliente->genero= null;
+        $cliente->fechaNac= null;
         $cliente->save();
 
         // Redirige a la página de inicio o a donde desees

@@ -12,7 +12,7 @@
     </div>
     <div class="row mt-3">
         <div class="col-md-6"><label class="labels">Número de identidad</label><input type="text" class="form-control" value=""></div>
-        <div class="col-md-6"><label class="labels">Fecha de nacimiento</label><input type="text" class="form-control" value=""></div>
+        <div class="col-md-6"><label class="labels">Fecha de nacimiento</label><input type="date" class="form-control"></div>
     </div>
     <div class="row mt-3">
         <div class="col-md-12"><label class="labels">Género</label>
@@ -23,9 +23,11 @@
             </div>
         </div>
     </div>
+    <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Guardar</button></div>
     <form action="{{ route('logout') }}" method="POST">
         @csrf
         <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Cerrar otras sesiones</button></div>
     </form>
+    
     
 </div>

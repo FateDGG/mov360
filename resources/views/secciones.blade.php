@@ -27,7 +27,7 @@
     </head>
     <body>
        @include("components.navbar") 
-        @include("components.domiciliosPage", ['restaurantes' => $restaurantes])
+        @include("components.SeccionRestaurantes")
        @extends("components.footer")  
     </body>
 </html>
