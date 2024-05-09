@@ -14,4 +14,17 @@ class RestaurantesController extends Controller
         $restaurantes = Restaurante::all(); // Obtener todos los restaurantes de la base de datos
         return view('Domicilios')->with('restaurantes', $restaurantes);; // Pasar los restaurantes a la vista
     }
+    public function mostrarPorCategoria(Request $request) 
+    {
+        $tipoCocina = $request->query('categoria');
+        $restaurantes = Restaurante::where('tipo_cocina', $tipoCocina)->get();
+        $imagenSrc = $request->query('imagenSrc');
+        return view('Secciones')->with([
+            'restaurantes' => $restaurantes,
+            'tipoCocina' => $tipoCocina,
+            'imagenSrc' => $imagenSrc
+        ]);
+    }
+    
+    
 }

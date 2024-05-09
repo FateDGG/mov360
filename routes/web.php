@@ -50,3 +50,4 @@ Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::get('/Domicilios', 'App\Http\Controllers\RestaurantesController@showRestaurants')->name('restaurantes');
+Route::get('/Secciones', 'App\Http\Controllers\RestaurantesController@mostrarPorCategoria')->name('catrestaurantes');
