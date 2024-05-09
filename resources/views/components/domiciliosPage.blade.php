@@ -147,62 +147,17 @@
     <h1 class="container text-center p-3">Busca tu restaurante favorito</h1>
     <div class="container text-center">
         <div class="row">
+          @foreach($restaurantes as $restaurante)
           <div class="col top-pad">
-            <div class="card" style="width: 20rem;">
-                <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Restaurante name</p>
-                </div>
+              <div class="card" style="width: 20rem;">
+                  <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <p class="card-text">{{ $restaurante->nombre }}</p> <!-- Mostrar el nombre del restaurante -->
+                      <!-- Puedes mostrar más información del restaurante aquí -->
+                  </div>
               </div>
           </div>
-          <div class="col top-pad">
-            <div class="card" style="width: 20rem;">
-                <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Restaurante name</p>
-                </div>
-              </div>
-          </div>
-          <div class="col top-pad">
-            <div class="card" style="width: 20rem;">
-                <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Restaurante name</p>
-                </div>
-              </div>
-          </div>
-          <div class="col top-pad">
-            <div class="card" style="width: 20rem;">
-                <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Restaurante name</p>
-                </div>
-              </div>
-          </div>
-          <div class="col top-pad">
-            <div class="card" style="width: 20rem;">
-                <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Restaurante name</p>
-                </div>
-              </div>
-          </div>
-          <div class="col top-pad">
-            <div class="card" style="width: 20rem;">
-                <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Restaurante name</p>
-                </div>
-              </div>
-          </div>
-          <div class="col top-pad">
-            <div class="card" style="width: 20rem;">
-                <img src="{{ asset('img/restaurantes.jpeg')}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text">Restaurante name</p>
-                </div>
-              </div>
-          </div>
+          @endforeach
         </div>
 
       </div>
