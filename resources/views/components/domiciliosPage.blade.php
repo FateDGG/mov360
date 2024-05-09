@@ -33,7 +33,7 @@
       <div class="col top-pad">
          <a href="{{ url('/Secciones?categoria=China') }}">
         <div class="card" style="width: 8rem;height 15rem;">
-            <a href="https://srwok.com/"><img src="{{ asset('img/comidachina.jpeg') }}" class="card-img-top imagen-categoria" alt="...">
+           <img src="{{ asset('img/comidachina.jpeg') }}" class="card-img-top imagen-categoria" alt="...">
             <div class="card-body">
                 <p class="card-text">China</p>
             </div>

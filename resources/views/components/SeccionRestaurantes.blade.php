@@ -13,11 +13,9 @@
     </div>
     <div class="container text-center">
         <div class="row row-cols-3 pb-2">
-          {{-- <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
-          <div class="col pb-4 pt-4">@include("components.restauranteCard")</div> --}}
+          @foreach($restaurantes as $restaurante)  
+            <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
+          @endforeach
         </div>
       </div>
 </div>

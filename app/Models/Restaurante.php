@@ -17,5 +17,6 @@ class Restaurante extends Model
         'tipo_cocina',
         'tiempo_de_espera',
         'puntuacion_promedio',
+        'url_foto',
     ];
 }

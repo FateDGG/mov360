@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tipo_cocina');
             $table->integer('tiempo_de_espera');
             $table->double('puntuacion_promedio');
+            $table->string('url_foto');
             $table->timestamps();
         });
     }
