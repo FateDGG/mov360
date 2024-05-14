@@ -7,7 +7,10 @@
         <title>MOV360</title>
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
         <script src="{{ asset('scripts/custom.js') }}"></script>
+        
         <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         rel="stylesheet"
@@ -47,7 +50,30 @@
                             </div>
                         </div>
                         <div class="col-md-9 pt-6">
-                            @include("components.profileInfo") 
+                            {{-- @include("components.profileInfo")  --}}
+                                <div id="profileInfo" style="display: none;">
+                                <!-- Aquí se cargará dinámicamente el contenido de la pestaña seleccionada -->
+                                <!-- Contenido del componente profileInfo -->
+                                    @include('components.profileInfo')
+                                </div>
+                                <!-- Contenido del componente de tarjetas -->
+                                <div id="cardsContent" style="display: none;">
+                                    <!-- Aquí va el contenido de las tarjetas -->
+                                    @include('components.infoOrdenes')
+                                </div>
+
+                                <!-- Contenido del componente de últimas órdenes -->
+                                <div id="ordersContent" style="display: none;">
+                                    <!-- Aquí va el contenido de las últimas órdenes -->
+                                    <p>Contenido de las últimas órdenes</p>
+                                </div>
+
+                                <!-- Contenido del componente de centro de ayuda -->
+                                <div id="helpContent" style="display: none;">
+                                    <!-- Aquí va el contenido del centro de ayuda -->
+                                    <p>Contenido del centro de ayuda</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,3 +87,47 @@
        @extends("components.footer")  
     </body>
 </html>
+
+<script>
+    // Escucha el evento personalizado enviado desde profileBar
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectedTab = 'v-pills-home-tab';
+        // Llama a la función loadProfileContent con la pestaña predeterminada
+        loadProfileContent(selectedTab);
+
+        // Escucha el evento personalizado enviado desde profileBar
+        document.addEventListener('profileTabSelected', function(e) {
+            const selectedTab = e.detail.tabId;
+            // Carga el contenido correspondiente a la pestaña seleccionada
+            loadProfileContent(selectedTab);
+        });
+    });
+
+    // Función para cargar dinámicamente el contenido de la pestaña seleccionada
+    function loadProfileContent(tabId) {
+        // Ocultar todos los contenidos
+        document.getElementById('profileInfo').style.display = 'none';
+        document.getElementById('cardsContent').style.display = 'none';
+        document.getElementById('ordersContent').style.display = 'none';
+        document.getElementById('helpContent').style.display = 'none';
+
+        // Mostrar el contenido correspondiente a la pestaña seleccionada
+        switch (tabId) {
+            case 'v-pills-home-tab':
+                document.getElementById('profileInfo').style.display = 'block';
+                break;
+            case 'v-pills-messages-tab':
+                document.getElementById('cardsContent').style.display = 'block';
+                break;
+            case 'v-pills-orders-tab':
+                document.getElementById('ordersContent').style.display = 'block';
+                break;
+            case 'v-pills-help-tab':
+                document.getElementById('helpContent').style.display = 'block';
+                break;
+            default:
+                document.getElementById('profileInfo').style.display = 'block';
+                break;
+        }
+    }
+</script>
