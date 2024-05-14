@@ -37,5 +37,16 @@ class LoginController extends Controller
 
         return redirect('/'); // Redirige a la página de inicio u otra página según tu aplicación
     }
+    public function update(Request $request)
+    {
+        $cliente = Cliente::find(Auth::id());
+
+        // Actualizar el modelo del cliente con los datos proporcionados
+        $cliente->update($request->only(['nombre', 'email', 'telefono', 'documento', 'fechaNac', 'genero']));
+
+        return redirect()->back()->with('success', 'Información actualizada exitosamente');
+            // Eliminar campos vacíos del array de datos del formulario
+
+    }
 
 }

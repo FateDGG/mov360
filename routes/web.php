@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantesController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,3 +52,6 @@ Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name
 
 Route::get('/Domicilios', 'App\Http\Controllers\RestaurantesController@showRestaurants')->name('restaurantes');
 Route::get('/Secciones', 'App\Http\Controllers\RestaurantesController@mostrarPorCategoria')->name('catrestaurantes');
+
+Route::post('/Profile', 'App\Http\Controllers\Auth\LoginController@update')->name('user.update');
+
