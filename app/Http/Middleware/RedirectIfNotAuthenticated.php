@@ -12,7 +12,7 @@ class RedirectIfNotAuthenticated
     public function handle($request, Closure $next)
     {
         if (!Auth::check()) {
-            return redirect('/')->with('error', 'Debes iniciar sesión para acceder a esta página');
+            return redirect('/Ingreso')->with('error', 'Debes iniciar sesión para acceder a esta página');
         }
 
         return $next($request);

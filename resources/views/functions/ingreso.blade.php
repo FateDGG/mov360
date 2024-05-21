@@ -10,6 +10,11 @@
       <h1>
         Registrarse <br>o<br> Iniciar sesión
       </h1>
+      @if (session('error'))
+        <div id="popup" class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+      @endif
     </div>
     <div class="container p-2">
         <h1>
