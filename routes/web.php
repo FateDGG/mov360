@@ -34,7 +34,15 @@ Route::get('/LogIn', function () {
 Route::get('/Register', function () {
     return view('registro');
 });
-
+Route::get('/Carrito', function () {
+    return view('shopcart');
+});
+Route::get('/Pagos', function () {
+    return view('Pagar');
+});
+Route::get('/AñadirTarjeta', function () {
+    return view('añadirTarjeta');
+});
 Route::get('/Profile', function () {
     return view('perfil');
 })->middleware('NotAuthenticated');

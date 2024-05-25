@@ -59,19 +59,21 @@
                                 <!-- Contenido del componente de tarjetas -->
                                 <div id="cardsContent" style="display: none;">
                                     <!-- Aquí va el contenido de las tarjetas -->
-                                    @include('components.infoOrdenes')
+                                    @include('components.infoTarjetas')
                                 </div>
 
                                 <!-- Contenido del componente de últimas órdenes -->
                                 <div id="ordersContent" style="display: none;">
                                     <!-- Aquí va el contenido de las últimas órdenes -->
                                     <p>Contenido de las últimas órdenes</p>
+                                    @include('components.infoOrdenes')
                                 </div>
 
                                 <!-- Contenido del componente de centro de ayuda -->
                                 <div id="helpContent" style="display: none;">
                                     <!-- Aquí va el contenido del centro de ayuda -->
                                     <p>Contenido del centro de ayuda</p>
+                                    @include('components.ayuda')
                                 </div>
                             </div>
                         </div>
