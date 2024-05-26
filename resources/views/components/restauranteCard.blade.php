@@ -8,14 +8,17 @@
       </div>
     </a>
   </div> --}}
-<div class="col top-pad">
+  <div class="col top-pad">
     <a href="{{ url('/Restaurante') }}">
-    <div class="card" style="width: 20rem;">
-        <img src="{{ asset( $restaurante->url_foto )}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">{{ $restaurante->nombre }}</p> <!-- Mostrar el nombre del restaurante -->
-            <!-- Puedes mostrar más información del restaurante aquí -->
+        <div class="card" style="width: 20rem;">
+            <img src="{{ asset( $restaurante->url_foto )}}" class="card-img-top fixed-size-img" alt="..." style="width: 100%;
+            height: 10rem; 
+            object-fit: cover;
+            object-position: center;">
+            <div class="card-body">
+                <p class="card-text">{{ $restaurante->nombre }}</p> <!-- Mostrar el nombre del restaurante -->
+                <!-- Puedes mostrar más información del restaurante aquí -->
+            </div>
         </div>
-    </div>
-  </a>  
+    </a>  
 </div>

@@ -70,11 +70,11 @@
     <div class="row home-page-cards col-space">
       <div class="col e">
         <div class="card mb-3">
-            <img src="{{ asset('img/registraRestaurante.jpeg') }}" class="card-img-top" alt="...">
+            <img src="{{ asset('img/registrarConductor.png') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Registra tu restaurante</h5>
-              <p class="card-text">Solicita el registro de tu restaurante para hacer parte de nuestra plataforma</p>
-              <a href="#" class="btn btn-primary">Registrate</a>
+              <h5 class="card-title">Registrate como conductor</h5>
+              <p class="card-text">Solicita el registro como conductor para hacer parte de nuestra plataforma</p>
+              <a href="{{url('/RegistroDeConductor')}}" class="btn btn-primary">Registrate</a>
             </div>
           </div>
       </div>
@@ -82,9 +82,9 @@
         <div class="card mb-3">
             <img src="{{ asset('img/registraEmpresa.jpeg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Registra tu comercio</h5>
-              <p class="card-text">Registra tu comercio para ampliar la cobertura de tu negocio haciendo parte de nuestra plataforma</p>
-              <a href="#" class="btn btn-primary">Registrate</a>
+              <h5 class="card-title">Registra tu comercio/restaurante</h5>
+              <p class="card-text">Registra tu comercio o restaurante para ampliar la cobertura de tu negocio haciendo parte de nuestra plataforma</p>
+              <a href="{{url('/RegistroDeEmpresa')}}" class="btn btn-primary">Registrate</a>
             </div>
           </div>
       </div>
