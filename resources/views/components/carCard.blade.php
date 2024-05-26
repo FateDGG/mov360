@@ -6,6 +6,6 @@
     <p class="card-text text-danger fs-4 fw-bold">$143.500</p>
     <p class="card-text"><strong>Fiat Mobi 1.0</strong> o similar</p>
   
-    <a href="#" class="btn btn-danger">Cotizar</a>
+    <a href="{{ url('/carros') }}" class="btn btn-danger">Cotizar</a>
   </div>
 </div>

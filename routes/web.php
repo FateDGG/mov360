@@ -43,6 +43,15 @@ Route::get('/Pagos', function () {
 Route::get('/AñadirTarjeta', function () {
     return view('añadirTarjeta');
 });
+Route::get('/carros', function () {
+    return view('carro');
+});
+Route::get('/RegistroDeConductor', function () {
+    return view('registrarConductor');
+});
+Route::get('/RegistroDeEmpresa', function () {
+    return view('registrarEmpresa');
+});
 Route::get('/Profile', function () {
     return view('perfil');
 })->middleware('NotAuthenticated');
