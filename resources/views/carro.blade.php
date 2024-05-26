@@ -26,44 +26,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
-       @include("components.navbar") 
        
+       @include("components.navbar") 
 
-<div style="background-image: url('{{ asset('img/bannerAlquilar.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
-    @include("components.alquilarVehiculos")
-</div>
-
-<div class="container text-center">
-    <div class="row row-cols-4 pb-2">
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
+       <div style="background-image: url('{{ asset('img/bannerAlquilar.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
+        @include("components.alquilarVehiculos")
     </div>
-  </div>
-  </body>
+       @include("components.carros")
 
-
-  <script>
-    $(document).ready(function(){
-        $('.timepicker').timepicker({
-            showMeridian: false, // Mostrar formato de 24 horas
-            defaultTime: '12:00' // Hora predeterminada (opcional)
-        });
-    });
-</script>
-  <script>
-    $(document).ready(function(){
-        $('.calendary').datepicker({
-            format: 'D dd/mm', // Formato de fecha
-            autoclose: true, // Cierra automáticamente después de seleccionar una fecha
-            todayHighlight: true, // Destaca la fecha actual
-            language: 'es' // Idioma español
-        });
-    });
-</script>
-        
        @extends("components.footer")  
+       
     </body>
 </html>
