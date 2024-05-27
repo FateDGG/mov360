@@ -53,7 +53,7 @@
                     <select class="form-control mb-2" aria-placeholder="Seleccione metodo de pago" name="metodo_pago"> 
                         <option>Efectivo</option>
                         @foreach($tarjetas as $tarjeta)
-                            <option>Tarjeta</option>
+                            <option>Tarjeta **** **** **** {{ substr($tarjeta->numero, -4) }} {{ $tarjeta->titular }}</option>
                         @endforeach
                     </select>
             
