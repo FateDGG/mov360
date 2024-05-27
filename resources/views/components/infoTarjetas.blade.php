@@ -24,8 +24,9 @@
         <h5 class="mt-3 text-lg">Efectivo</h5>
       </div>
     </div>
-    @include ("components.tarjetaCard")
-    
+    @foreach ($tarjetas as $tarjeta)
+      @include ("components.tarjetaCard", ['tarjetas' => $tarjetas])
+    @endforeach
   </div>
 </div>
   </body>

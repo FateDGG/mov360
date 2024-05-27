@@ -59,7 +59,7 @@
                                 <!-- Contenido del componente de tarjetas -->
                                 <div id="cardsContent" style="display: none;">
                                     <!-- Aquí va el contenido de las tarjetas -->
-                                    @include('components.infoTarjetas')
+                                    @include('components.infoTarjetas', ['tarjetas' => $tarjetas])
                                 </div>
 
                                 <!-- Contenido del componente de últimas órdenes -->

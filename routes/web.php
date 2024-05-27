@@ -93,3 +93,4 @@ Route::get('/añadir', function () {
 
 Route::post('/añadir', 'App\Http\Controllers\TarjetaController@guardarTarjeta')->name('añadir');
 
+Route::get('/Profile', 'App\Http\Controllers\TarjetaController@mostrarTarjetas')->name('mostrarTarjetas');

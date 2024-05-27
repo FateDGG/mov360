@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Controllers\Controller;
 use App\Models\Tarjeta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TarjetaController extends Controller
 {
@@ -41,6 +41,16 @@ class TarjetaController extends Controller
         // dd($request->all());
 
     }
-    
+    public function mostrarTarjetas()
+    {
+        // Obtener el usuario logueado
+        $user = Auth::user();
+
+        // Obtener todas las tarjetas asociadas a este usuario
+        $tarjetas = Tarjeta::where('id_usuario', $user->id)->get();
+
+        // Pasar las tarjetas a la vista
+        return view('perfil', compact('tarjetas'));
+    }
 
 }
