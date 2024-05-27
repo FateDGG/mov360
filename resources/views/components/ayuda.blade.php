@@ -7,15 +7,16 @@
             <div class="col-md-10">
                 <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h5 class="card-title">Nombre restaurante</h5>
-                    <span class="badge bg-warning text-dark">Estado</span>
+                    <h5 class="card-title">Marca: {{ $alquiler->vehiculo_modelo }}</h5>
+                    <h5 class="card-title">Modelo: {{ $alquiler->vehiculo_nombre}}</h5>
                 </div>
-                <p class="card-text mb-1"><small class="text-muted">Fecha: Viernes, 9 de febrero de 2024</small></p>
-                <p class="card-text mb-1"><small class="text-muted">Cantidad: 1</small></p>
-                <p class="card-text mb-1"><small class="text-muted">Total: $ 11.900</small></p>
+                <p class="card-text mb-1"><small class="text-muted">Fecha de recogida: {{ $alquiler->fecha_recogida}}</small></p>
+                <p class="card-text mb-1"><small class="text-muted">Hora de recogida: {{ $alquiler->hora_recogida}}</small></p>
+                <p class="card-text mb-1"><small class="text-muted">Fecha de Entrega: {{ $alquiler->fecha_entrega}}</small></p>
+                <p class="card-text mb-1"><small class="text-muted">Hora de Entrega: {{ $alquiler->hora_entrega}}</small></p>
+                <p class="card-text mb-1"><small class="text-muted">Lugar de entrega: {{ $alquiler->lugar_entrega}}</small></p>
+                <p class="card-text mb-1"><small class="text-muted">Precio: {{ $alquiler->precio_total}}</small></p>
                 <div class="d-flex">
-                    <button class="btn btn-success me-2">Ver resumen</button>
-                    <button class="btn btn-outline-success">Imprimir comprobante</button>
                     <button class="btn btn-success me-2 bg-danger ml-2">Cancelar</button>
                 </div>
                 </div>
