@@ -74,7 +74,41 @@
         precioTotalElemento.textContent = "$" + precioTotal;
     });
 </script>
-  
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const fechaRecogida = new Date("{{ $fechaRecogida }}");
+      const fechaEntrega = new Date("{{ $fechaEntrega }}");
+      const precioStr = "{{ $precio }}";
+      const precio = parseFloat(precioStr);
+
+      const diferenciaMs = fechaEntrega - fechaRecogida;
+      const diasDiferencia = Math.ceil(diferenciaMs / (1000 * 60 * 60 * 24));
+      const precioTotal = diasDiferencia * precio;
+
+      const precioTotalInput = document.getElementById('precioTotalInput');
+      precioTotalInput.value = precioTotal;
+
+      const formaPagoInput = document.getElementById('formaPagoInput');
+      const paymentMethodSelect = document.getElementById('paymentMethodSelect');
+
+      paymentMethodSelect.addEventListener('change', function() {
+          formaPagoInput.value = this.value;
+      });
+  });
+</script>
+<form id="formularioAlquiler" action="{{ route('guardar-alquiler') }}" method="POST">
+  @csrf
+  <input type="hidden" name="id_usuario" value="{{ Auth::user()->id }}">
+  <input type="hidden" name="vehiculoNombre" value="{{ $modelo }}">
+  <input type="hidden" name="vehiculoModelo" value="{{ $marca }}">
+  <input type="hidden" name="precioTotal" id="precioTotalInput">
+  <input type="hidden" name="lugarRecogida" value="{{ $aeropuertoCiudad }}">
+  <input type="hidden" name="lugarEntrega" value="{{ $devolucion }}">
+  <input type="hidden" name="fechaEntrega" value="{{ $fechaEntrega }}">
+  <input type="hidden" name="fechaRecogida" value="{{ $fechaRecogida }}">
+  <input type="hidden" name="horaEntrega" value="{{ $horaEntrega }}">
+  <input type="hidden" name="horaRecogida" value="{{ $horaRecogida }}">
+  <input type="hidden" name="formaPago" id="formaPagoInput">
   <div class="card bg-white dark:bg-zinc-800 mb-3">
     <div class="card-body">
       <h5 class="card-title text-black dark:text-white">
@@ -95,46 +129,20 @@
         <i class="bi bi-check-circle-fill text-success"></i> Método de pago
       </h5>
       <p class="card-text text-black dark:text-zinc-300">Métodos disponibles:</p>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="efectivo" checked>
-        <label class="form-check-label" for="efectivo" class="text-black dark:text-white">
-          <i class="bi bi-cash"></i> Efectivo
-        </label>
-      </div>
-      @foreach ($tarjetas as $tarjeta)
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="paymentMethod" id="visa">
-          <label class="form-check-label" for="visa" class="text-black dark:text-white">
-            <i class="bi bi-credit-card"></i> **** **** **** {{ substr($tarjeta->numero, -4) }} {{ $tarjeta->titular }}
-          </label>
-        </div>
-      @endforeach
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="paymentMethod" id="visa">
-          <label class="form-check-label" for="visa" class="text-black dark:text-white">
-            <i class="bi bi-credit-card"></i> 409355 •••• 3763 JUAN YEPES
-          </label>
-        </div>
-      <p class="card-text mt-3 text-black dark:text-zinc-300">Agregar método de pago:</p>
-      <button class="btn btn-outline-secondary dark:bg-zinc-700 w-100 mb-2">
-        <i class="bi bi-plus-circle"></i> Agregar tarjeta de crédito o débito
-      </button>
-      <p class="card-text text-black dark:text-zinc-300">Métodos no disponibles:</p>
-      <button class="btn btn-outline-danger dark:bg-red-600 w-100">
-        <i class="bi bi-exclamation-circle"></i> Rappi Pay <span class="text-danger">Tu cuenta no tiene fondos.</span>
+      <select class="form-select" name="paymentMethod" id="paymentMethodSelect" required>
+        <option selected>Escoge un medio de pago</option>
+        <option value="efectivo">Efectivo</option>
+        @foreach ($tarjetas as $tarjeta)
+            <option value="tarjeta">**** **** **** {{ substr($tarjeta->numero, -4) }} {{ $tarjeta->titular }}</option>
+        @endforeach
+      </select>
+
+      <p class="card-text mt-3 text-black dark:text-zinc-300">Confirmar y pagar:</p>
+      <button type="submit" class="btn btn-outline-secondary dark:bg-zinc-700 w-100 mb-2">
+        <i class="bi bi-plus-circle" id="btnPagar"></i> Pagar
       </button>
     </div>
   </div>
-
-  
-  <div class="card bg-white dark:bg-zinc-800 mb-3">
-    <div class="card-body">
-      <h5 class="card-title text-black dark:text-white">
-        <i class="bi bi-ticket-perforated"></i> Cupón: <a href="#" class="text-success dark:text-green-300 float-end">+ Agregar</a>
-      </h5>
-    </div>
-  </div>
-
 </div>
 
        @extends("components.footer")  

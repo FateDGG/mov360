@@ -72,8 +72,8 @@
                                 <!-- Contenido del componente de centro de ayuda -->
                                 <div id="helpContent" style="display: none;">
                                     <!-- Aquí va el contenido del centro de ayuda -->
-                                    <p>Contenido del centro de ayuda</p>
-                                    @include('components.ayuda')
+                                    <p>Alquileres recientes:</p>
+                                    @include('components.ayuda', ['alquileres' => $alquileres])
                                 </div>
                             </div>
                         </div>

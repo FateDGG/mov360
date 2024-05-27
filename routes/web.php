@@ -97,3 +97,6 @@ Route::get('/Profile', 'App\Http\Controllers\TarjetaController@mostrarTarjetas')
 
 Route::delete('/Profile', 'App\Http\Controllers\TarjetaController@eliminarTarjeta')->name('tarjetas.eliminar');
 
+Route::post('/guardar-alquiler', 'App\Http\Controllers\AlquilerController@guardarAlquiler')->name('guardar-alquiler');
+
+// Route::get('/mostrarAlquileres', 'App\Http\Controllers\AlquilerController@mostrarAlquileres')->name('mostrarAlquileres');

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tarjeta;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Alquiler;
 class AlquilerController extends Controller
 {
     //
@@ -41,6 +41,24 @@ class AlquilerController extends Controller
             'tarjetas' => $tarjetas,
         ]);
         // dd($request->all());
+    }
+    public function guardarAlquiler(Request $request)
+    {
+        $alquiler = new Alquiler();
+        $alquiler->id_usuario = $request->input('id_usuario');
+        $alquiler->vehiculo_nombre = $request->input('vehiculoNombre');
+        $alquiler->vehiculo_modelo = $request->input('vehiculoModelo');
+        $alquiler->precio_total = $request->input('precioTotal');
+        $alquiler->lugar_recogida = $request->input('lugarRecogida');
+        $alquiler->lugar_entrega = $request->input('lugarEntrega');
+        $alquiler->fecha_entrega = $request->input('fechaEntrega');
+        $alquiler->fecha_recogida = $request->input('fechaRecogida');
+        $alquiler->hora_entrega = $request->input('horaEntrega');
+        $alquiler->hora_recogida = $request->input('horaRecogida');
+        $alquiler->forma_pago = $request->input('formaPago');
+        $alquiler->save();
+
+        return redirect('/')->with('success', 'Alquiler guardado correctamente');
     }
 
 }

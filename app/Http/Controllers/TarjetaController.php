@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Tarjeta;
+use App\Models\Alquiler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,24 +46,15 @@ class TarjetaController extends Controller
     {
         // Obtener el usuario logueado
         $user = Auth::user();
-
+        $alquileres = Alquiler::where('id_usuario', $user->id)->get();
         // Obtener todas las tarjetas asociadas a este usuario
         $tarjetas = Tarjeta::where('id_usuario', $user->id)->get();
 
         // Pasar las tarjetas a la vista
-        return view('perfil', compact('tarjetas'));
+        return view('perfil', compact('tarjetas', 'alquileres'));
+        
     }
-    // public function mostrarPagarAlquilado()
-    // {
-    //     // Obtener el usuario logueado
-    //     $user = Auth::user();
-
-    //     // Obtener todas las tarjetas asociadas a este usuario
-    //     $tarjetas = Tarjeta::where('id_usuario', $user->id)->get();
-
-    //     // Pasar las tarjetas a la vista
-    //     return view('pagarAlquilado')->with('tarjetas', $tarjetas);
-    // }
+    
     public function eliminarTarjeta(Request $request){
     // Buscar la tarjeta por ID y eliminarla
         $tarjeta = Tarjeta::find($request->input('id'));
