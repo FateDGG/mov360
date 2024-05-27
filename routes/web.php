@@ -100,3 +100,6 @@ Route::delete('/Profile', 'App\Http\Controllers\TarjetaController@eliminarTarjet
 Route::post('/guardar-alquiler', 'App\Http\Controllers\AlquilerController@guardarAlquiler')->name('guardar-alquiler');
 
 // Route::get('/mostrarAlquileres', 'App\Http\Controllers\AlquilerController@mostrarAlquileres')->name('mostrarAlquileres');
+
+Route::get('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@showFormulario')->name('transporte');
+Route::post('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@solicitarTransporte')->name('solicitar_transporte');
