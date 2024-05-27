@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Tarjeta;
+use Illuminate\Support\Facades\Auth;
 
 class AlquilerController extends Controller
 {
@@ -21,7 +23,9 @@ class AlquilerController extends Controller
         $modelo = $request->input('modelo');
         $marca = $request->input('marca');
         $precio = $request->input('precio');
+        $tarjetas = Tarjeta::where('id_usuario', Auth::id())->get();
 
+        // Pasar las tarjetas a la vista
         // Redirigir a la vista de pagos con los datos del formulario
         return view('pagarAlquilado', [
             'devolucion' => $devolucion,
@@ -34,6 +38,7 @@ class AlquilerController extends Controller
             'marca' => $marca,
             'modelo' => $modelo,
             'precio' => $precio,
+            'tarjetas' => $tarjetas,
         ]);
         // dd($request->all());
     }

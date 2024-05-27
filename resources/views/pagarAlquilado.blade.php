@@ -101,18 +101,20 @@
           <i class="bi bi-cash"></i> Efectivo
         </label>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="visa">
-        <label class="form-check-label" for="visa" class="text-black dark:text-white">
-          <i class="bi bi-credit-card"></i> 409355 •••• 3763 JUAN YEPES
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="mastercard">
-        <label class="form-check-label" for="mastercard" class="text-black dark:text-white">
-          <i class="bi bi-credit-card"></i> 525358 •••• 5409 JUAN YEPES
-        </label>
-      </div>
+      @foreach ($tarjetas as $tarjeta)
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="visa">
+          <label class="form-check-label" for="visa" class="text-black dark:text-white">
+            <i class="bi bi-credit-card"></i> **** **** **** {{ substr($tarjeta->numero, -4) }} {{ $tarjeta->titular }}
+          </label>
+        </div>
+      @endforeach
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymentMethod" id="visa">
+          <label class="form-check-label" for="visa" class="text-black dark:text-white">
+            <i class="bi bi-credit-card"></i> 409355 •••• 3763 JUAN YEPES
+          </label>
+        </div>
       <p class="card-text mt-3 text-black dark:text-zinc-300">Agregar método de pago:</p>
       <button class="btn btn-outline-secondary dark:bg-zinc-700 w-100 mb-2">
         <i class="bi bi-plus-circle"></i> Agregar tarjeta de crédito o débito

@@ -37,7 +37,7 @@ class TarjetaController extends Controller
         // Guardar la tarjeta en la base de datos
         $tarjeta->save();
 
-        return redirect('/');
+        return redirect('/Profile');
         // dd($request->all());
 
     }
@@ -51,6 +51,28 @@ class TarjetaController extends Controller
 
         // Pasar las tarjetas a la vista
         return view('perfil', compact('tarjetas'));
+    }
+    // public function mostrarPagarAlquilado()
+    // {
+    //     // Obtener el usuario logueado
+    //     $user = Auth::user();
+
+    //     // Obtener todas las tarjetas asociadas a este usuario
+    //     $tarjetas = Tarjeta::where('id_usuario', $user->id)->get();
+
+    //     // Pasar las tarjetas a la vista
+    //     return view('pagarAlquilado')->with('tarjetas', $tarjetas);
+    // }
+    public function eliminarTarjeta(Request $request){
+    // Buscar la tarjeta por ID y eliminarla
+        $tarjeta = Tarjeta::find($request->input('id'));
+
+        if ($tarjeta) {
+            $tarjeta->delete();
+        }
+
+        // Redirigir de vuelta al perfil con un mensaje de éxito
+        return redirect('/Profile')->with('success', 'Tarjeta eliminada exitosamente');
     }
 
 }
