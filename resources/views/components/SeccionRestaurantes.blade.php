@@ -14,7 +14,20 @@
     <div class="container text-center">
         <div class="row row-cols-3 pb-2">
           @foreach($restaurantes as $restaurante)  
-            <div class="col pb-4 pt-4">@include("components.restauranteCard")</div>
+            <div class="col top-pad">
+                <form method="GET" action="{{ route('restaurante.show') }}">
+                    <button type="submit" style="border: none; background: none; padding: 0;">
+                        <input type="hidden" name="nombre" value="{{ $restaurante->nombre }}">
+                        <div class="card" style="width: 20rem;">
+                            <img src="{{ asset($restaurante->url_foto) }}" class="card-img-top fixed-size-img" alt="..." style="width: 100%; height: 10rem; object-fit: cover; object-position: center;">
+                            <div class="card-body">
+                                <p class="card-text">{{ $restaurante->nombre }}</p> <!-- Mostrar el nombre del restaurante -->
+                                <!-- Puedes mostrar más información del restaurante aquí -->
+                            </div>
+                        </div>
+                    </button>
+                </form>
+            </div>
           @endforeach
         </div>
       </div>

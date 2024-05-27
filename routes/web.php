@@ -66,9 +66,10 @@ Route::get('/Profile', function () {
 Route::get('/Secciones', function () {
     return view('secciones');
 })->middleware('NotAuthenticated');
-Route::get('/Restaurante', function () {
-    return view('restaurante');
-})->middleware('NotAuthenticated');
+
+// Route::get('/Restaurante', function () {
+//     return view('restaurante');
+// })->middleware('NotAuthenticated');
 
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register.post');
@@ -103,3 +104,7 @@ Route::post('/guardar-alquiler', 'App\Http\Controllers\AlquilerController@guarda
 
 Route::get('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@showFormulario')->name('transporte');
 Route::post('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@solicitarTransporte')->name('solicitar_transporte');
+
+use App\Http\Controllers\RestauranteController;
+
+Route::get('/Restaurante', 'App\Http\Controllers\RestaurantesController@show')->name('restaurante.show')->middleware('NotAuthenticated');

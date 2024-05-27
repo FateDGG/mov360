@@ -25,6 +25,17 @@ class RestaurantesController extends Controller
             'imagenSrc' => $imagenSrc
         ]);
     }
+    public function show(Request $request)
+    {
+        // Obtener el ID del restaurante desde la solicitud
+        $nombre = $request->query('nombre');
+        
+        // Buscar el restaurante por nombre
+        $restaurante = Restaurante::where('nombre', $nombre)->firstOrFail();
+
+        // Pasar el restaurante a la vista
+        return view('restaurante', compact('restaurante'));
+    }
     
     
 }
