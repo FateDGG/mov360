@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('id_usuario');
             $table->string('titular');
             $table->string('numero');
-            $table->date('vencimiento');
-            $table->integer('cvv');
+            $table->string('mes');
+            $table->string('anio');
+            $table->string('cvv');
             $table->timestamps();
         });
     }

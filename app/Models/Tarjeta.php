@@ -14,7 +14,8 @@ class Tarjeta extends Model
         'id_usuario',
         'titular',
         'numero',
-        'vencimiento',
+        'mes',
+        'anio',
         'cvv',
     ];
     

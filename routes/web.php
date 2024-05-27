@@ -53,7 +53,7 @@ Route::get('/AñadirTarjeta', function () {
 });
 Route::get('/carros', function () {
     return view('carro');
-});
+},);
 Route::get('/RegistroDeConductor', function () {
     return view('registrarConductor');
 });
@@ -84,4 +84,12 @@ Route::post('/Profile', 'App\Http\Controllers\Auth\LoginController@update')->nam
 Route::get('/Alquilar_Vehiculo', 'App\Http\Controllers\AeropuertosController@showAeropuertos')->name('aeropuertos');
 
 Route::post('/procesarFormulario', 'App\Http\Controllers\AlquilerController@procesarFormulario')->name('procesarFormulario');
+
+Route::post('/AñadirTarjeta', 'App\Http\Controllers\TarjetaController@guardarTarjeta')->name('añadirTarjeta');
+
+Route::get('/añadir', function () {
+    return view('components.tarjeta');
+})->middleware('NotAuthenticated');
+
+Route::post('/añadir', 'App\Http\Controllers\TarjetaController@guardarTarjeta')->name('añadir');
 
