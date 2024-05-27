@@ -14,17 +14,37 @@
             <option>Más de 65</option>
           </select>
   
-          <input
-            type="text"
-            class="form-control mb-2"
-            placeholder="Introduce un aeropuerto o ciudad"
-          />
+          <select class="form-control mb-2">
+            <option>Seleccionar aeropuerto o ciudad</option>
+            @foreach ($aeropuertos as $aeropuerto)
+              <option>{{ $aeropuerto->nombre }}</option>
+            @endforeach
+          </select>
   
           <div class="d-flex justify-content-between">
-            <input type="text" class="form-control mb-2 calendary" placeholder="lun. 13/5" />
-            <input type="text" class="form-control mb-2 timepicker" placeholder="Mediodía" />
-            <input type="text" class="form-control mb-2 calendary" placeholder="lun. 20/5" />
-            <input type="text" class="form-control mb-2 timepicker" placeholder="Mediodía" />
+            <input type="date" class="form-control mb-2 calendary" placeholder="lun. 13/5" />
+            {{-- <input type="text" class="form-control mb-2 timepicker" placeholder="Mediodía" /> --}}
+            <select name="hora" id="hora" class="form-control mb-2 timepicker">
+              <option>Selecciona la hora de recogida</option>
+              <?php
+              // Generar las opciones para las horas (0-23)
+              for ($i = 8; $i < 24; $i++) {
+                  $hora = str_pad($i, 2, "0", STR_PAD_LEFT);
+                  echo "<option value=\"$hora\">$hora</option>";
+              }
+              ?>
+            </select>
+            <input type="date" class="form-control mb-2 calendary" placeholder="lun. 20/5" />
+            <select name="hora" id="hora" class="form-control mb-2 timepicker">
+              <option>Selecciona la hora de entrega</option>
+              <?php
+              // Generar las opciones para las horas (0-23)
+              for ($i = 8; $i < 24; $i++) {
+                  $hora = str_pad($i, 2, "0", STR_PAD_LEFT);
+                  echo "<option value=\"$hora\">$hora</option>";
+              }
+              ?>
+            </select>
           </div>
   
           <button type="submit" class="btn btn-warning btn-block">Buscar</button>

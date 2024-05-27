@@ -30,7 +30,7 @@
        
 
 <div style="background-image: url('{{ asset('img/bannerAlquilar.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
-    @include("components.alquilarVehiculos")
+    @include("components.alquilarVehiculos", ['aeropuertos' => $aeropuertos])
 </div>
 
 <div class="container text-center">

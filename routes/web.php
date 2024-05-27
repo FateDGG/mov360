@@ -72,3 +72,4 @@ Route::get('/Secciones', 'App\Http\Controllers\RestaurantesController@mostrarPor
 
 Route::post('/Profile', 'App\Http\Controllers\Auth\LoginController@update')->name('user.update');
 
+Route::get('/Alquilar_Vehiculo', 'App\Http\Controllers\AeropuertosController@showAeropuertos')->name('aeropuertos');
