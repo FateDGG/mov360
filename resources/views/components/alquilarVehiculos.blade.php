@@ -23,7 +23,6 @@
   
           <div class="d-flex justify-content-between">
             <input type="date" class="form-control mb-2 calendary" placeholder="lun. 13/5" />
-            {{-- <input type="text" class="form-control mb-2 timepicker" placeholder="Mediodía" /> --}}
             <select name="hora" id="hora" class="form-control mb-2 timepicker">
               <option>Selecciona la hora de recogida</option>
               <?php
@@ -47,7 +46,6 @@
             </select>
           </div>
   
-          <button type="submit" class="btn btn-warning btn-block">Buscar</button>
         </div>
       </form>
   
@@ -58,7 +56,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Ahorra hasta un 38%</h5>
-              <p class="card-text">Compara varias webs de viajes con una sola búsqueda.</p>
+              <p class="card-text">Comparado con otras webs que brindan servicios similares.</p>
             </div>
           </div>
         </div>
@@ -73,8 +71,8 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Filtra tus ofertas</h5>
-              <p class="card-text">Filtra por tipo de carro, marca y otras características.</p>
+              <h5 class="card-title">Diversidad de ofertas</h5>
+              <p class="card-text">Encuentra diveridad de vehículos, marcas y otras características.</p>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AlquilerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,7 +39,14 @@ Route::get('/Carrito', function () {
     return view('shopcart');
 });
 Route::get('/Pagos', function () {
-    return view('Pagar');
+    return view('pagar');
+});
+Route::get('/PagosTransporte', function () {
+    return view('pagarTransporte');
+});
+
+Route::get('/PagosAlquilado', function () {
+    return view('pagarAlquilado');
 });
 Route::get('/AñadirTarjeta', function () {
     return view('añadirTarjeta');
@@ -61,6 +69,7 @@ Route::get('/Secciones', function () {
 Route::get('/Restaurante', function () {
     return view('restaurante');
 })->middleware('NotAuthenticated');
+
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register.post');
 
@@ -73,3 +82,6 @@ Route::get('/Secciones', 'App\Http\Controllers\RestaurantesController@mostrarPor
 Route::post('/Profile', 'App\Http\Controllers\Auth\LoginController@update')->name('user.update');
 
 Route::get('/Alquilar_Vehiculo', 'App\Http\Controllers\AeropuertosController@showAeropuertos')->name('aeropuertos');
+
+Route::post('/procesarFormulario', 'App\Http\Controllers\AlquilerController@procesarFormulario')->name('procesarFormulario');
+
