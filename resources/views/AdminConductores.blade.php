@@ -37,19 +37,17 @@
         <div class="container mt-5">
             <h1 class="text-center text-primary">Administrar Conductores</h1>
             <div class="card p-4 card-custom">
-              <div class="form-group p-2">
+              {{-- <div class="form-group p-2">
                 <label for="filterName" class="text-primary">Filtrar por Nombre</label>
                 <input type="text" class="form-control" id="filterName" placeholder="Ingrese el nombre del conductor">
               </div>
               <div class="form-group p-2">
                 <label for="filterCedula" class="text-primary">Filtrar por Número de Cédula</label>
                 <input type="text" class="form-control" id="filterCedula" placeholder="Ingrese el número de cédula del conductor">
-              </div>
+              </div> --}}
               
               <div class="text-center mt-4">
-                <a class="btn btn-primary btn-block ">Filtrar</a>
-
-                <div class="text-center mt-4">
+                {{-- <a class="btn btn-primary btn-block ">Filtrar</a>  --}}
 
                     <a href="{{url('/AgregarConductor')}}" class="btn  btn-block btn-success pt-2">Agregar Nuevo Conductor</a>
                   </div>
@@ -57,7 +55,7 @@
 
                     <a href="{{url('/PostulacionesConductores')}}" class="btn  btn-block btn-success pt-2">Ver Postulaciones</a>
                   </div>
-              </div>
+
             </div>
             
         
@@ -65,8 +63,7 @@
               <h2 class="text-primary">Lista de Conductores</h2>
               <ul class="list-group">
                 <!-- Aquí se deben generar dinámicamente los conductores -->
-                @include("components.cardConductorAdmin")
-                @include("components.cardConductorAdmin")
+                @include("components.cardConductorAdmin", ['conductores' => $conductores])
                 <!-- Fin de la generación dinámica -->
               </ul>
             </div>

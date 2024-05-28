@@ -41,29 +41,37 @@
        <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="container-custom col-12 col-md-8 col-lg-6">
           <h1 class="text-center text-primary">Agregar Nuevo Conductor</h1>
-          <form>
+          <form action="{{ route('conductor.store') }}" method="POST">
+            @csrf
             <div class="form-group">
-              <label for="driverName" class="text-primary font-weight-bold">Nombre del Conductor</label>
-              <input type="text" class="form-control" id="driverName" placeholder="Ingrese el nombre del conductor">
+                <label for="driverName" class="text-primary font-weight-bold">Nombre del Conductor</label>
+                <input type="text" class="form-control" id="driverName" name="driverName"
+                       placeholder="Ingrese el nombre del conductor" required>
             </div>
-            <h3 class="card-subtitle mt-4 mb-2">Personal Information</h3>
-              <div class="row g-3">
-                  <input type="text" id="email" name="email" class="form-control" placeholder="Email Address">
-                  <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone Number">
-                  <input type="text" id="idNumber" name="idNumber" class="form-control" placeholder="ID Number">
-                  <input type="date" id="dob" name="dob" class="form-control" placeholder="Date of Birth">
-                  <input type="file" id="licensePhoto" name="licensePhoto" class="form-control" placeholder="Upload License Photo">
-              </div>
-              <h3 class="card-subtitle mt-4 mb-2">Vehicle Information</h3>
-              <div class="row g-3">
-                  <input type="text" id="vehicleColor" name="vehicleColor" class="form-control" placeholder="Vehicle Color">
-                  <input type="text" id="vehicleModel" name="vehicleModel" class="form-control" placeholder="Vehicle Model">
-                  <input type="text" id="vehiclePlate" name="vehiclePlate" class="form-control" placeholder="Vehicle Plate Number">
-                  <input type="text" id="vehicleBrand" name="vehicleBrand" class="form-control" placeholder="Vehicle Brand">
-                  <input type="file" id="vehiclePhoto" name="vehiclePhoto" class="form-control" placeholder="Upload Vehicle Photo">
-              </div>
+            <h3 class="card-subtitle mt-4 mb-2">Información Personal</h3>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Número de Teléfono"
+                           required>
+                </div>
+            </div>
+            <h3 class="card-subtitle mt-4 mb-2">Información del Vehículo</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="vehicleColor" name="vehicleColor"
+                           placeholder="Color del Vehículo" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="vehicleModel" name="vehicleModel"
+                           placeholder="Modelo del Vehículo" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="vehiclePlate" name="vehiclePlate"
+                           placeholder="Número de Placa" required>
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary btn-block mt-4">Agregar Conductor</button>
-          </form>
+        </form>
         </div>
       </div>
     

@@ -160,3 +160,9 @@ Route::post('/crear_empresa', 'App\Http\Controllers\EmpresaController@store')->n
 // routes/web.php
 
 Route::delete('/empresas/{id}', 'App\Http\Controllers\EmpresaController@destroy')->name('eliminar_empresa')->middleware('AdminLocked');
+
+Route::get('/AdminConduc', 'App\Http\Controllers\ConductorController@index')->middleware('AdminLocked');
+
+Route::post('/agregar_conductor', 'App\Http\Controllers\ConductorController@store')->name('conductor.store')->middleware('AdminLocked');
+
+Route::delete('/conductor/{id}', 'App\Http\Controllers\ConductorController@destroy')->name('eliminar_conductor')->middleware('AdminLocked');

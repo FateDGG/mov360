@@ -48,10 +48,10 @@
           <div class="table-container">
             <h2 class="text-center text-secondary">Listado de Pedidos</h2>
             <form class="mb-4">
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="searchPedidos" class="text-primary">Buscar por ID de Pedido o Usuario</label>
                 <input type="text" class="form-control" id="searchPedidos" placeholder="Ingrese ID de Pedido o Nombre de Usuario">
-              </div>
+              </div> --}}
             </form>
             <table class="table table-striped table-bordered">
               <thead>
