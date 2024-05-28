@@ -15,7 +15,8 @@ return new class extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->string('id_usuario');
-            $table->string('detalle');
+            $table->string('valor');
+            $table->string('descripcion');
             $table->timestamps();
             
             // Definir una clave externa para la relación con la tabla de restaurantes

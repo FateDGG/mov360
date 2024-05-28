@@ -8,6 +8,7 @@ use App\Models\Plato;
 use App\Models\Tarjeta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CompraController extends Controller
 {
@@ -84,5 +85,35 @@ class CompraController extends Controller
 
         // Por ejemplo, puedes pasar los datos a la vista de confirmación de pago
         return view('pagar', compact('total', 'productos', 'tarjetas'));
+    }
+    public function pagar(Request $request)
+    {
+        // Obtener el usuario autenticado
+        $usuario = Auth::user();
+
+        // Obtener los datos del formulario
+        $total = $request->total;
+        $productos = $request->productos;
+        $metodoPago = $request->paymentMethod;
+
+        // Crear una nueva compra
+        $compra = new Compra();
+        $compra->id_usuario = $usuario->id;
+        $compra->valor = $total;
+
+        // Construir la descripción de la compra
+        $descripcion = '';
+        foreach ($productos as $producto) {
+            $descripcion .= $producto['nombre'] . ' (Cantidad: ' . $producto['cantidad'] . ', Precio: $' . $producto['precio'] . '), ';
+        }
+        $compra->descripcion = rtrim($descripcion, ', '); // Eliminar la última coma y espacio
+
+        // Guardar la compra en la base de datos
+        $compra->save();
+
+        Session::forget('carrito');
+        // Aquí puedes procesar los datos adicionales o redirigir a otra página, etc.
+        return redirect('/')->with('success_message', '¡Pedido realizado con éxito!');
+        // Por ejemplo, redirige a una página de pago exitoso
     }
 }

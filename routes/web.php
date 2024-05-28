@@ -113,3 +113,4 @@ Route::get('/Carrito', 'App\Http\Controllers\CompraController@mostrarCarrito')->
 Route::post('/Carrito/agregar', 'App\Http\Controllers\CompraController@agregarElementoCarrito')->name('carrito.agregar');
 Route::post('/Pagos', 'App\Http\Controllers\CompraController@realizarPago')->name('compra.pagar');
 Route::delete('/Carrito/{key}', 'App\Http\Controllers\CompraController@eliminarProducto')->name('carrito.eliminar');
+Route::post('/pagar', 'App\Http\Controllers\CompraController@pagar')->name('pagar');
