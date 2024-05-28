@@ -16,7 +16,7 @@
                 <a class="nav-color" href="{{ url('/AdminConduc') }}">Administrar Conductores</a>
             </li>
             <li class="nav-item">
-                <a class="nav-color" href="{{ url('/AdminUser') }}">Administrar Usuarios</a>
+                <a class="nav-color" href="{{ url('/AdminPedidos') }}">Administrar Servicios</a>
             </li>
          
             </ul>
