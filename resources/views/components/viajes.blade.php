@@ -7,8 +7,8 @@
             <div class="col-md-10">
                 <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h5 class="card-title">Marca: {{$transporte->lugar_recogida }}</h5>
-                    <h5 class="card-title">Modelo: {{$transporte->lugar_destino}}</h5>
+                    <h5 class="card-title">Dirección de recogida: {{$transporte->lugar_recogida }}</h5>
+                    <h5 class="card-title">Dirección de llegada: {{$transporte->lugar_destino}}</h5>
                 </div>
                 @php
                 $conductor = $conductores->firstWhere('nombre', $transporte->nombre_conductor);
@@ -18,7 +18,10 @@
                 <p class="card-text mb-1"><small class="text-muted">Placa: {{$conductor->placa}}</small></p>
                 <p class="card-text mb-1"><small class="text-muted">Precio: {{$transporte->precio}}</small></p>
                 <div class="d-flex">
-                    <button class="btn btn-success me-2 bg-danger ml-2">Cancelar</button>
+                    <form action="{{ route('formularioCancelacionTransporte') }}" method="GET">
+                        <input type="hidden" name="id" value="{{ $transporte->id }}">
+                        <button type="submit" class="btn btn-danger">Cancelar</button>
+                    </form>
                 </div>
                 </div>
             </div>

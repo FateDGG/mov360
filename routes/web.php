@@ -137,12 +137,11 @@ Route::post('/Pagos', 'App\Http\Controllers\CompraController@realizarPago')->nam
 Route::delete('/Carrito/{key}', 'App\Http\Controllers\CompraController@eliminarProducto')->name('carrito.eliminar');
 Route::post('/pagar', 'App\Http\Controllers\CompraController@pagar')->name('pagar');
 
-Route::get('/CancelarAlquiler', function () {
-    return view('cancelarAlquiler');
-});
-Route::get('/CancelarPedido', function () {
-    return view('cancelarPedido');
-});
-Route::get('/CancelarTransporte', function () {
-    return view('cancelarTransporte');
-});
+Route::get('/CancelarAlquiler', 'App\Http\Controllers\AlquilerController@mostrarFormulariocancelacion')->name('mostrarFormularioCancelacion');
+
+Route::post('/cancelarAlquiler', 'App\Http\Controllers\AlquilerController@cancelar')->name('cancelarAlquiler');
+
+
+Route::get('/CancelarTransporte', 'App\Http\Controllers\TransporteController@formularioCancelacionTransporte')->name('formularioCancelacionTransporte');
+
+Route::post('/cancelarTransporte', 'App\Http\Controllers\TransporteController@cancelarViaje')->name('cancelarViaje');
