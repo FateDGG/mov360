@@ -23,7 +23,7 @@
           <button class="btn btn-success" onclick="window.location.href='{{ url('/CrearEmpresa') }}'">Create New Business</button>
         </div>
       </div>
-      <div id="businessList" class="mb-4">
+      <div id="businessList" class="mb-4">  
         @foreach ($empresas as $empresa)
         <div class="card mb-3">
             <div class="row no-gutters">
@@ -35,7 +35,12 @@
                         <h5 class="card-title">{{ $empresa->nombre }}</h5>
                         <p class="card-text">NIT: {{ $empresa->nit }}</p>
                         <!-- Agrega otros detalles de la empresa que desees mostrar -->
-                        <button class="btn btn-danger" onclick="deleteBusiness({{ $empresa->id }})">Delete</button>
+                        <form method="POST" action="{{ route('eliminar_empresa', ['id' => $empresa->id]) }}" style="display: inline;">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta empresa?')">Delete</button>
+                        </form>
+
                     </div>
                 </div>
             </div>

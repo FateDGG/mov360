@@ -18,5 +18,7 @@ class Conductor extends Model
         'nombre',
         'vehiculo',
         'placa',
+        'telefono', // Nuevo campo
+        'color_auto',
     ];
 }
