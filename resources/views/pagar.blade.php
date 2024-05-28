@@ -51,30 +51,14 @@
   
   <div class="card bg-white dark:bg-zinc-800 mb-3">
     <div class="card-body">
-      <h5 class="card-title text-black dark:text-white">
-        <img src="https://placehold.co/30" alt="McDonald's" class="rounded-circle me-2">
-        McDonald's
-        <span class="badge bg-secondary dark:bg-zinc-600 float-end">1 producto</span>
-      </h5>
-      <p class="card-text text-black dark:text-zinc-300">Entrega estimada: <strong>42 - 57 min</strong></p>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="deliveryOption" id="prioritaria">
-        <label class="form-check-label" for="prioritaria" class="text-black dark:text-white">
-          Prioritaria ⚡ Envío directo a ti <span class="float-end">+$4,000</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="deliveryOption" id="basica" checked>
-        <label class="form-check-label" for="basica" class="text-black dark:text-white">
-          Básica Entrega habitual <span class="float-end">$0</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="deliveryOption" id="economica">
-        <label class="form-check-label" for="economica" class="text-black dark:text-white">
-          Económica Espera y ahorra <span class="float-end">-$4,000</span>
-        </label>
-      </div>
+      <h1>Confirmación de Pago</h1>
+      <p>Total: ${{ $total }}</p>
+      <h2>Productos:</h2>
+      <ul>
+          @foreach($productos as $producto)
+              <li>{{ $producto['nombre'] }} - Cantidad: {{ $producto['cantidad'] }} - Precio Unidad: ${{ $producto['precio'] }} </li>
+          @endforeach
+      </ul>
     </div>
   </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plato;
 use Illuminate\Http\Request;
 use App\Models\Restaurante;
 
@@ -33,8 +34,10 @@ class RestaurantesController extends Controller
         // Buscar el restaurante por nombre
         $restaurante = Restaurante::where('nombre', $nombre)->firstOrFail();
 
+        $platos = Plato::where('nombre_restaurante', $nombre)->get();
+
         // Pasar el restaurante a la vista
-        return view('restaurante', compact('restaurante'));
+        return view('restaurante', compact('restaurante' , 'platos'));
     }
     
     

@@ -43,11 +43,9 @@
             </div>
             <div class="container text-center">
                 <div class="row row-cols-4 pb-2">
-                  <div class="col pb-4 pt-4">@include("components.PlatoCard")</div>
-                  <div class="col pb-4 pt-4">@include("components.PlatoCard")</div>
-                  <div class="col pb-4 pt-4">@include("components.PlatoCard")</div>
-                  <div class="col pb-4 pt-4">@include("components.PlatoCard")</div>
-                  <div class="col pb-4 pt-4">@include("components.PlatoCard")</div>
+                    @forEach ($platos as $plato)
+                        <div class="col pb-4 pt-4">@include("components.PlatoCard", ['platos' => $platos])</div>
+                    @endforeach
                 </div>
               </div>
         </div>

@@ -108,3 +108,8 @@ Route::post('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@
 use App\Http\Controllers\RestauranteController;
 
 Route::get('/Restaurante', 'App\Http\Controllers\RestaurantesController@show')->name('restaurante.show')->middleware('NotAuthenticated');
+
+Route::get('/Carrito', 'App\Http\Controllers\CompraController@mostrarCarrito')->name('carrito.mostrar');
+Route::post('/Carrito/agregar', 'App\Http\Controllers\CompraController@agregarElementoCarrito')->name('carrito.agregar');
+Route::post('/Pagos', 'App\Http\Controllers\CompraController@realizarPago')->name('compra.pagar');
+Route::delete('/Carrito/{key}', 'App\Http\Controllers\CompraController@eliminarProducto')->name('carrito.eliminar');
