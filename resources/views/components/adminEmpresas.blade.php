@@ -28,12 +28,13 @@
             <input type="text" id="filterNIT" class="form-control" placeholder="Filter by NIT">
           </div>
           <button class="btn btn-primary" onclick="filterBusinesses()">Filter</button>
+          <button class="btn btn-success" onclick="window.location.href='{{url('/CrearEmpresa')}}'">Create New Business</button>
+          <button class="btn btn-success" onclick="window.location.href='{{url('/PostulacionesEmpresas')}}'">Ver postulaciones</button>
         </div>
       </div>
       <div id="businessList" class="mb-4">
         <!-- Business list will be populated here -->
       </div>
-      <button class="btn btn-success" onclick="window.location.href='create-business.html'">Create New Business</button>
     </div>
   </div>
 

@@ -27,7 +27,7 @@
     </head>
     <body>
        
-       @include("components.navbar") 
+       @include("components.navbarAdmin") 
 
         @include("components.adminEmpresas")
 
