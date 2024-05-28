@@ -78,6 +78,9 @@ Route::get('/PostulacionesEmpresas', function () {
 Route::get('/CrearEmpresa', function () {
     return view('AdmnCrearEmpresa');
 });
+Route::get('/Ubicacion', function () {
+    return view('ubicacion');
+});
 Route::get('/AgregarConductor', function () {
     return view('admnCrearConductor');
 });
