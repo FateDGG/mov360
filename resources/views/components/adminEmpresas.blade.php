@@ -20,64 +20,36 @@
       <h1 class="text-center text-primary mb-4">Admin Dashboard</h1>
       <div class="card mb-4">
         <div class="card-body">
-          <h5 class="card-title">Filter Businesses</h5>
-          <div class="form-group">
-            <input type="text" id="filterName" class="form-control" placeholder="Filter by Name">
-          </div>
-          <div class="form-group">
-            <input type="text" id="filterNIT" class="form-control" placeholder="Filter by NIT">
-          </div>
-          <button class="btn btn-primary" onclick="filterBusinesses()">Filter</button>
-          <button class="btn btn-success" onclick="window.location.href='{{url('/CrearEmpresa')}}'">Create New Business</button>
-          <button class="btn btn-success" onclick="window.location.href='{{url('/PostulacionesEmpresas')}}'">Ver postulaciones</button>
+          <button class="btn btn-success" onclick="window.location.href='{{ url('/CrearEmpresa') }}'">Create New Business</button>
         </div>
       </div>
       <div id="businessList" class="mb-4">
-        <!-- Business list will be populated here -->
+        @foreach ($empresas as $empresa)
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <!-- Aquí puedes mostrar la foto de la empresa -->
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $empresa->nombre }}</h5>
+                        <p class="card-text">NIT: {{ $empresa->nit }}</p>
+                        <!-- Agrega otros detalles de la empresa que desees mostrar -->
+                        <button class="btn btn-danger" onclick="deleteBusiness({{ $empresa->id }})">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
       </div>
     </div>
   </div>
 
   <script>
-    function filterBusinesses() {
-      // Implement the filter functionality here
-    }
-
     function deleteBusiness(businessId) {
-      // Implement the delete functionality here
+      // Implementa la lógica para eliminar la empresa con el ID proporcionado
+      // Puedes enviar una solicitud AJAX o redirigir a una ruta específica para manejar la eliminación
     }
-
-    // Example data, replace with actual data from your backend
-    const businesses = [
-      { id: 1, name: 'Business One', nit: '123456', photo: 'photo1.jpg' },
-      { id: 2, name: 'Business Two', nit: '789012', photo: 'photo2.jpg' }
-    ];
-
-    function populateBusinessList() {
-      const businessList = document.getElementById('businessList');
-      businessList.innerHTML = '';
-      businesses.forEach(business => {
-        const businessCard = `
-          <div class="card mb-3">
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src="${business.photo}" class="card-img" alt="${business.name}">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">${business.name}</h5>
-                  <p class="card-text">NIT: ${business.nit}</p>
-                  <button class="btn btn-danger" onclick="deleteBusiness(${business.id})">Delete</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-        businessList.innerHTML += businessCard;
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', populateBusinessList);
   </script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

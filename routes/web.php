@@ -60,9 +60,7 @@ Route::get('/RegistroDeConductor', function () {
 Route::get('/RegistroDeEmpresa', function () {
     return view('registrarEmpresa');
 });
-Route::get('/AdminEmp', function () {
-    return view('AdminEmpresas');
-})->middleware('AdminLocked');
+
 Route::get('/AdminConduc', function () {
     return view('AdminConductores');
 })->middleware('AdminLocked');
@@ -154,3 +152,5 @@ Route::post('/cancelarTransporte', 'App\Http\Controllers\TransporteController@ca
 Route::get('/CancelarPedido', 'App\Http\Controllers\CompraController@formularioCancelacionPedido')->name('formularioCancelacionPedido');
 
 Route::post('/cancelarPedido', 'App\Http\Controllers\CompraController@cancelarPedido')->name('cancelarPedido');
+
+Route::get('/AdminEmp', 'App\Http\Controllers\EmpresaController@index')->middleware('AdminLocked');
