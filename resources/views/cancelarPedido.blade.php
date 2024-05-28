@@ -43,16 +43,18 @@
         <div class="container d-flex justify-content-center align-items-center min-vh-100">
           <div class="container-custom col-12 col-md-8 col-lg-6">
             <h1 class="text-center text-primary">Cancelar Servicio</h1>
-            <form>
-              <div class="form-group">
-                <label for="cancelReason" class="text-primary font-weight-bold">Motivo de la Cancelación</label>
-                <textarea class="form-control" id="cancelReason" rows="4" placeholder="Ingrese el motivo de la cancelación" required></textarea>
-              </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="confirmCancel" required>
-                <label class="form-check-label text-primary font-weight-bold" for="confirmCancel">Estoy seguro de cancelar el servicio</label>
-              </div>
-              <button type="submit" class="btn btn-danger btn-block mt-4">Confirmar Cancelación</button>
+            <form method="POST" action="{{ route('cancelarPedido') }}">
+              @csrf
+                <input type="hidden" name="compra_id" value="{{ $compra->id }}">
+                <div class="form-group">
+                    <label for="cancelReason" class="text-primary font-weight-bold">Motivo de la Cancelación</label>
+                    <textarea class="form-control" id="cancelReason" name="cancelReason" rows="4" placeholder="Ingrese el motivo de la cancelación" required></textarea>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="confirmCancel" required>
+                    <label class="form-check-label text-primary font-weight-bold" for="confirmCancel">Estoy seguro de cancelar el servicio</label>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block mt-4">Confirmar Cancelación</button>
             </form>
           </div>
         </div>

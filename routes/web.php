@@ -145,3 +145,7 @@ Route::post('/cancelarAlquiler', 'App\Http\Controllers\AlquilerController@cancel
 Route::get('/CancelarTransporte', 'App\Http\Controllers\TransporteController@formularioCancelacionTransporte')->name('formularioCancelacionTransporte');
 
 Route::post('/cancelarTransporte', 'App\Http\Controllers\TransporteController@cancelarViaje')->name('cancelarViaje');
+
+Route::get('/CancelarPedido', 'App\Http\Controllers\CompraController@formularioCancelacionPedido')->name('formularioCancelacionPedido');
+
+Route::post('/cancelarPedido', 'App\Http\Controllers\CompraController@cancelarPedido')->name('cancelarPedido');

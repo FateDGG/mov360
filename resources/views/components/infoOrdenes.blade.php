@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,40 +20,40 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title">Pedido número: {{$compra->id}}</h5>
-                        
                     </div>
                     <p class="card-text mb-1"><small class="text-muted">Fecha y hora del pedido: {{$compra->created_at}}</small></p>
-                    
 
                     <!-- Iterar sobre los elementos de la descripción -->
-            @foreach(explode(', ', $compra->descripcion) as $item)
-              @php
-                  // Dividir cada elemento en cantidad y precio
-                  $detalle = explode('(Cantidad: ', $item);
+                    @foreach(explode(', ', $compra->descripcion) as $item)
+                        @php
+                            // Dividir cada elemento en cantidad y precio
+                            $detalle = explode('(Cantidad: ', $item);
 
-                  // Verificar si la división fue exitosa
-                  $nombre = $detalle[0];
-                  $cantidadPrecio = isset($detalle[1]) ? rtrim($detalle[1], ')') : '';
-              @endphp
+                            // Verificar si la división fue exitosa
+                            $nombre = $detalle[0];
+                            $cantidadPrecio = isset($detalle[1]) ? rtrim($detalle[1], ')') : '';
+                        @endphp
 
-              @if (!empty($cantidadPrecio))
-                  <p class="card-text mb-1"><small class="text-muted">{{$nombre}} - (Cantidad: {{$cantidadPrecio}})</small></p>
-              @else
-                  <p class="card-text mb-1"><small class="text-muted">{{$nombre}}</small></p>
-              @endif
-            @endforeach
-
+                        @if (!empty($cantidadPrecio))
+                            <p class="card-text mb-1"><small class="text-muted">{{$nombre}} - (Cantidad: {{$cantidadPrecio}})</small></p>
+                        @else
+                            <p class="card-text mb-1"><small class="text-muted">{{$nombre}}</small></p>
+                        @endif
+                    @endforeach
 
                     <p class="card-text mb-1"><small class="text-muted">Total: $ {{$compra->valor}}</small></p>
-                    <div class="d-flex">
-                        <button class="btn btn-success me-2 bg-danger ml-2">Cancelar</button>
-                    </div>
+
+                    <!-- Formulario para cancelar el pedido -->
+                    <form action="{{ route('formularioCancelacionPedido') }}" method="GET">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $compra->id }}">
+                        <button type="submit" class="btn btn-danger">Cancelar</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     @endforeach
-
 </div>
 </body>
 </html>

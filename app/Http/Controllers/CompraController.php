@@ -116,4 +116,43 @@ class CompraController extends Controller
         return redirect('/')->with('success_message', '¡Pedido realizado con éxito!');
         // Por ejemplo, redirige a una página de pago exitoso
     }
+    public function formularioCancelacionPedido(Request $request)
+    {
+        $id = $request->input('id');
+
+        // Obtener la compra por ID
+        $compra = Compra::find($id);
+
+        if (!$compra) {
+            return redirect('/')->with('error_message', '¡Compra no encontrada!');
+        }
+
+        // Pasar la compra a la vista de cancelación
+        return view('cancelarPedido', compact('compra'));
+    }
+    public function cancelarPedido(Request $request)
+    {
+        // Validar la solicitud
+        $request->validate([
+            'compra_id' => 'required|exists:compras,id',
+            'cancelReason' => 'required|string|max:255',
+        ]);
+
+        // Obtener el alquiler y eliminarlo
+        $compra = Compra::find($request->compra_id);
+        
+        if ($compra) {
+            // Puedes registrar la razón de la cancelación en un registro separado si es necesario
+            $razon = $request->cancelReason;
+
+            // Eliminar el alquiler
+            $compra->delete();
+            
+            // Redirigir con un mensaje de éxito
+            return redirect('/Profile')->with('success_message', '¡Compra cancelada con éxito!');
+        }
+
+        // Redirigir con un mensaje de error si no se encuentra el alquiler
+        return redirect('/Profile')->with('error_message', '¡Compra no encontrada!');
+    }
 }
