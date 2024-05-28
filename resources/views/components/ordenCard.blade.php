@@ -15,6 +15,7 @@
             <div class="d-flex">
                 <button class="btn btn-success me-2">Ver resumen</button>
                 <button class="btn btn-outline-success">Imprimir comprobante</button>
+                <button class="btn btn-outline-success ml-2">Ver Ubicacion</button>
                 <button class="btn btn-success me-2 bg-danger ml-2">Cancelar</button>
             </div>
             </div>

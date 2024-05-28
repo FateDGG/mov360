@@ -6,7 +6,7 @@
 
         <title>MOV360</title>
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="">
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <script src="{{ asset('scripts/custom.js') }}"></script>
