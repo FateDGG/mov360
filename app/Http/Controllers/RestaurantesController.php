@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plato;
 use Illuminate\Http\Request;
 use App\Models\Restaurante;
 
@@ -24,6 +25,19 @@ class RestaurantesController extends Controller
             'tipoCocina' => $tipoCocina,
             'imagenSrc' => $imagenSrc
         ]);
+    }
+    public function show(Request $request)
+    {
+        // Obtener el ID del restaurante desde la solicitud
+        $nombre = $request->query('nombre');
+        
+        // Buscar el restaurante por nombre
+        $restaurante = Restaurante::where('nombre', $nombre)->firstOrFail();
+
+        $platos = Plato::where('nombre_restaurante', $nombre)->get();
+
+        // Pasar el restaurante a la vista
+        return view('restaurante', compact('restaurante' , 'platos'));
     }
     
     

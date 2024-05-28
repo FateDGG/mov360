@@ -38,43 +38,27 @@
   
   <div class="card bg-white dark:bg-zinc-800 mb-3">
     <div class="card-body">
-      <h5 class="card-title text-black dark:text-white">Dirección de entrega <a href="#" class="text-success dark:text-green-300 float-end">Cambiar</a></h5>
-      <p class="card-text text-black dark:text-zinc-300">Calle 200 # 12 - 528</p>
-      <p class="card-text text-muted dark:text-zinc-400">Instrucciones de entrega (opcional)</p>
-      <div class="input-group">
-        <input type="text" class="form-control" value="apartamento 901 torre 4">
-        <button class="btn btn-outline-secondary dark:bg-zinc-700" type="button">✖</button>
-      </div>
+      <h5 class="card-title text-black dark:text-white">
+        Información del Usuario
+      </h5>
+      <p class="card-text text-black dark:text-zinc-300">Nombre: {{ Auth::user()->nombre }}</p>
+      <p class="card-text text-black dark:text-zinc-300">Documento: {{ Auth::user()->documento }}</p>
+      <p class="card-text text-black dark:text-zinc-300">Teléfono de Contacto: {{ Auth::user()->telefono }}</p>
+      <p class="card-text text-black dark:text-zinc-300">E-Mail: {{ Auth::user()->email }}</p>
     </div>
   </div>
 
   
   <div class="card bg-white dark:bg-zinc-800 mb-3">
     <div class="card-body">
-      <h5 class="card-title text-black dark:text-white">
-        <img src="https://placehold.co/30" alt="McDonald's" class="rounded-circle me-2">
-        McDonald's
-        <span class="badge bg-secondary dark:bg-zinc-600 float-end">1 producto</span>
-      </h5>
-      <p class="card-text text-black dark:text-zinc-300">Entrega estimada: <strong>42 - 57 min</strong></p>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="deliveryOption" id="prioritaria">
-        <label class="form-check-label" for="prioritaria" class="text-black dark:text-white">
-          Prioritaria ⚡ Envío directo a ti <span class="float-end">+$4,000</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="deliveryOption" id="basica" checked>
-        <label class="form-check-label" for="basica" class="text-black dark:text-white">
-          Básica Entrega habitual <span class="float-end">$0</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="deliveryOption" id="economica">
-        <label class="form-check-label" for="economica" class="text-black dark:text-white">
-          Económica Espera y ahorra <span class="float-end">-$4,000</span>
-        </label>
-      </div>
+      <h1>Confirmación de Pago</h1>
+      <p>Total: ${{ $total }}</p>
+      <h2>Productos:</h2>
+      <ul>
+          @foreach($productos as $producto)
+              <li>{{ $producto['nombre'] }} - Cantidad: {{ $producto['cantidad'] }} - Precio Unidad: ${{ $producto['precio'] }} </li>
+          @endforeach
+      </ul>
     </div>
   </div>
 
@@ -84,42 +68,38 @@
       <h5 class="card-title text-black dark:text-white">
         <i class="bi bi-check-circle-fill text-success"></i> Método de pago
       </h5>
-      <p class="card-text text-black dark:text-zinc-300">Métodos disponibles:</p>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="efectivo" checked>
-        <label class="form-check-label" for="efectivo" class="text-black dark:text-white">
-          <i class="bi bi-cash"></i> Efectivo
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="visa">
-        <label class="form-check-label" for="visa" class="text-black dark:text-white">
-          <i class="bi bi-credit-card"></i> 409355 •••• 3763 JUAN YEPES
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentMethod" id="mastercard">
-        <label class="form-check-label" for="mastercard" class="text-black dark:text-white">
-          <i class="bi bi-credit-card"></i> 525358 •••• 5409 JUAN YEPES
-        </label>
-      </div>
-      <p class="card-text mt-3 text-black dark:text-zinc-300">Agregar método de pago:</p>
-      <button class="btn btn-outline-secondary dark:bg-zinc-700 w-100 mb-2">
-        <i class="bi bi-plus-circle"></i> Agregar tarjeta de crédito o débito
-      </button>
-      <p class="card-text text-black dark:text-zinc-300">Métodos no disponibles:</p>
-      <button class="btn btn-outline-danger dark:bg-red-600 w-100">
-        <i class="bi bi-exclamation-circle"></i> Rappi Pay <span class="text-danger">Tu cuenta no tiene fondos.</span>
-      </button>
-    </div>
-  </div>
-
-  
-  <div class="card bg-white dark:bg-zinc-800 mb-3">
-    <div class="card-body">
-      <h5 class="card-title text-black dark:text-white">
-        <i class="bi bi-ticket-perforated"></i> Cupón: <a href="#" class="text-success dark:text-green-300 float-end">+ Agregar</a>
-      </h5>
+      <p class="card-text mt-3 text-black dark:text-zinc-300">Confirmar Pago:</p>
+      <form method="POST" action="{{ route('pagar') }}">
+        @csrf <!-- Agrega el token CSRF para protección contra falsificación de solicitudes entre sitios -->
+        
+        <!-- Información del usuario -->
+        <input type="hidden" name="nombre" value="{{ Auth::user()->nombre }}">
+        <input type="hidden" name="documento" value="{{ Auth::user()->documento }}">
+        <input type="hidden" name="telefono" value="{{ Auth::user()->telefono }}">
+        <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+        
+        <!-- Total y productos -->
+        <input type="hidden" name="total" value="{{ $total }}">
+        @foreach($productos as $key => $producto)
+            <input type="hidden" name="productos[{{ $key }}][nombre]" value="{{ $producto['nombre'] }}">
+            <input type="hidden" name="productos[{{ $key }}][cantidad]" value="{{ $producto['cantidad'] }}">
+            <input type="hidden" name="productos[{{ $key }}][precio]" value="{{ $producto['precio'] }}">
+        @endforeach
+    
+        <!-- Método de pago -->
+        <select class="form-select" name="paymentMethod" id="paymentMethodSelect" required>
+            <option selected>Escoge un medio de pago</option>
+            <option value="efectivo">Efectivo</option>
+            @foreach ($tarjetas as $tarjeta)
+                <option value="{{ $tarjeta->id }}">**** **** **** {{ substr($tarjeta->numero, -4) }} {{ $tarjeta->titular }}</option>
+            @endforeach
+        </select>
+        <br>
+        <!-- Botón de pago -->
+        <button type="submit" class="btn btn-outline-secondary dark:bg-zinc-700 w-100 mb-2">
+            <i class="bi bi-plus-circle"></i> Pagar
+        </button>
+    </form>
     </div>
   </div>
 

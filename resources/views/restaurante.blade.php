@@ -27,7 +27,29 @@
     </head>
     <body>
        @include("components.navbar") 
-        @include("components.RestauranteDetail")
+        {{-- @include("components.RestauranteDetail", ['restaurante' => $restaurante]) --}}
+        <div class="container-fluid text-center p-4">
+            <div class="row">
+                <div class="col">
+                    <img src="{{ asset($restaurante->url_foto) }}" class="img-fluid" style="max-height: 300px; width: 100%;" alt="Banner de pinchadas">
+                </div>
+            </div>
+            <div class="row p-4">
+                <div class="col">
+                    <h1>
+                       ({{$restaurante->nombre}})
+                    </h1>
+                </div>
+            </div>
+            <div class="container text-center">
+                <div class="row row-cols-4 pb-2">
+                    @forEach ($platos as $plato)
+                        <div class="col pb-4 pt-4">@include("components.PlatoCard", ['platos' => $platos])</div>
+                    @endforeach
+                </div>
+              </div>
+        </div>
+        
        @extends("components.footer")  
     </body>
 </html>

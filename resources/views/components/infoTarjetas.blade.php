@@ -10,11 +10,15 @@
     <h5 class="text-success text-lg"><i class="bi bi-credit-card"></i> Métodos de pago</h5>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-    <div class="card border-success text-center">
-      <div class="card-body flex items-center justify-center">
-        <i class="bi bi-plus-circle text-4xl"></i>
+      
+    <a href="AñadirTarjeta">
+      <div class="card border-success text-center">
+        <div class="card-body flex items-center justify-center">
+          <i class="bi bi-plus-circle text-4xl"></i>
+          <h5 class="mt-3 text-lg">Añadir Tarjeta</h5>
+        </div>
       </div>
-    </div>
+    </a>
     <div class="card bg-success text-white">
       <div class="card-body flex flex-col items-center justify-center">
         <div class="flex items-center justify-between">
@@ -24,8 +28,9 @@
         <h5 class="mt-3 text-lg">Efectivo</h5>
       </div>
     </div>
-    @include ("components.tarjetaCard")
-    
+    @foreach ($tarjetas as $tarjeta)
+      @include ("components.tarjetaCard", ['tarjetas' => $tarjetas])
+    @endforeach
   </div>
 </div>
   </body>

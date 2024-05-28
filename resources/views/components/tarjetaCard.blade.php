@@ -5,10 +5,16 @@
 
       </div>
       <div class="mt-3 text-lg">
-        <p class="mb-1">**** **** 3763</p>
-        <small>Nombre</small>
+        <p class="mb-1">**** **** **** {{ substr($tarjeta->numero, -4) }}</p>
+        <small>{{ $tarjeta->titular }}</small>
         <br>
-        <small class="float-end">08/26</small>
+        <small class="float-end">{{ str_pad($tarjeta->mes, 2, '0', STR_PAD_LEFT) }}/{{ substr($tarjeta->anio, -2) }}</small>
+        <form action="{{ route('tarjetas.eliminar') }}" method="POST" class="mt-3">
+          @csrf
+          @method('DELETE')
+          <input type="hidden" name="id" value="{{ $tarjeta->id }}">
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+      </form>
       </div>
     </div>
-  </div>
+</div>

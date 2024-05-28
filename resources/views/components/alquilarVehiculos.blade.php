@@ -14,20 +14,38 @@
             <option>Más de 65</option>
           </select>
   
-          <input
-            type="text"
-            class="form-control mb-2"
-            placeholder="Introduce un aeropuerto o ciudad"
-          />
+          <select class="form-control mb-2">
+            <option>Seleccionar aeropuerto o ciudad</option>
+            @foreach ($aeropuertos as $aeropuerto)
+              <option>{{ $aeropuerto->nombre }}</option>
+            @endforeach
+          </select>
   
           <div class="d-flex justify-content-between">
-            <input type="text" class="form-control mb-2 calendary" placeholder="lun. 13/5" />
-            <input type="text" class="form-control mb-2 timepicker" placeholder="Mediodía" />
-            <input type="text" class="form-control mb-2 calendary" placeholder="lun. 20/5" />
-            <input type="text" class="form-control mb-2 timepicker" placeholder="Mediodía" />
+            <input type="date" class="form-control mb-2 calendary" placeholder="lun. 13/5" />
+            <select name="hora" id="hora" class="form-control mb-2 timepicker">
+              <option>Selecciona la hora de recogida</option>
+              <?php
+              // Generar las opciones para las horas (0-23)
+              for ($i = 8; $i < 24; $i++) {
+                  $hora = str_pad($i, 2, "0", STR_PAD_LEFT);
+                  echo "<option value=\"$hora\">$hora</option>";
+              }
+              ?>
+            </select>
+            <input type="date" class="form-control mb-2 calendary" placeholder="lun. 20/5" />
+            <select name="hora" id="hora" class="form-control mb-2 timepicker">
+              <option>Selecciona la hora de entrega</option>
+              <?php
+              // Generar las opciones para las horas (0-23)
+              for ($i = 8; $i < 24; $i++) {
+                  $hora = str_pad($i, 2, "0", STR_PAD_LEFT);
+                  echo "<option value=\"$hora\">$hora</option>";
+              }
+              ?>
+            </select>
           </div>
   
-          <button type="submit" class="btn btn-warning btn-block">Buscar</button>
         </div>
       </form>
   
@@ -38,7 +56,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Ahorra hasta un 38%</h5>
-              <p class="card-text">Compara varias webs de viajes con una sola búsqueda.</p>
+              <p class="card-text">Comparado con otras webs que brindan servicios similares.</p>
             </div>
           </div>
         </div>
@@ -53,8 +71,8 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Filtra tus ofertas</h5>
-              <p class="card-text">Filtra por tipo de carro, marca y otras características.</p>
+              <h5 class="card-title">Diversidad de ofertas</h5>
+              <p class="card-text">Encuentra diveridad de vehículos, marcas y otras características.</p>
             </div>
           </div>
         </div>

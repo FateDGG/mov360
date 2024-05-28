@@ -54,40 +54,44 @@
             </div>
           </div>
           <div class="card-form__inner">
-            <div class="card-input">
-              <label for="cardNumber" class="card-input__label">Card Number</label>
-              <input type="text" id="cardNumber" class="card-input__input" autocomplete="off">
-            </div>
-            <div class="card-input">
-              <label for="cardName" class="card-input__label">Card Holder</label>
-              <input type="text" id="cardName" class="card-input__input" autocomplete="off">
-            </div>
-            <div class="card-form__row">
-              <div class="card-form__col">
-                <div class="card-form__group">
-                  <label for="cardMonth" class="card-input__label">Expiration Date</label>
-                  <select class="card-input__input -select" id="cardMonth">
-                    <option value="" disabled selected>Month</option>
-                    <?php for ($i = 1; $i <= 12; $i++): ?>
-                      <option value="<?= str_pad($i, 2, '0', STR_PAD_LEFT) ?>"><?= str_pad($i, 2, '0', STR_PAD_LEFT) ?></option>
-                    <?php endfor; ?>
-                  </select>
-                  <select class="card-input__input -select" id="cardYear">
-                    <option value="" disabled selected>Year</option>
-                    <?php for ($i = date('Y'); $i < date('Y') + 12; $i++): ?>
-                      <option value="<?= $i ?>"><?= $i ?></option>
-                    <?php endfor; ?>
-                  </select>
-                </div>
+            <form action='añadir' method="POST">
+              @csrf
+              <div class="card-input">
+                <label for="cardNumber" class="card-input__label">Card Number</label>
+                <input type="text" id="cardNumber" name="numero"  class="card-input__input" autocomplete="off">
               </div>
-              <div class="card-form__col -cvv">
-                <div class="card-input">
-                  <label for="cardCvv" class="card-input__label">CVV</label>
-                  <input type="text" class="card-input__input" id="cardCvv" maxlength="4" autocomplete="off">
-                </div>
+              <div class="card-input">
+                <label for="cardName" class="card-input__label">Card Holder</label>
+                <input type="text" id="cardName" class="card-input__input"  name="titular" autocomplete="off">
               </div>
-            </div>
-            <button class="card-form__button" id="submit-button">Agregar</button>
+              <div class="card-form__row">
+                <div class="card-form__col">
+                  <div class="card-form__group">
+                    <label for="cardMonth" class="card-input__label">Expiration Date</label>
+                    <select name="mes" class="card-input__input -select" id="cardMonth">
+                      <option value="" disabled selected >Month</option>
+                      <?php for ($i = 1; $i <= 12; $i++): ?>
+                        <option value="<?= str_pad($i, 2, '0', STR_PAD_LEFT) ?>"><?= str_pad($i, 2, '0', STR_PAD_LEFT) ?></option>
+                      <?php endfor; ?>
+                    </select>
+                    <select name="anio" class="card-input__input -select" id="cardYear">
+                      <option  value="" disabled selected>Year</option>
+                      <?php for ($i = date('Y'); $i < date('Y') + 12; $i++): ?>
+                        <option value="<?= $i ?>"><?= $i ?></option>
+                      <?php endfor; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="card-form__col -cvv">
+                  <div class="card-input">
+                    <label for="cardCvv" class="card-input__label">CVV</label>
+                    <input type="text" name="cvv" class="card-input__input" id="cardCvv" maxlength="4" autocomplete="off">
+                  </div>
+                </div>
+                <input type="hidden" name="id_usuario" value="{{ Auth::user()->id }}">
+              </div>
+              <button class="card-form__button" id="submit-button">Agregar</button>
+            </form>
           </div>
         </div>
 

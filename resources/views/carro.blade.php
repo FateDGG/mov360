@@ -29,8 +29,8 @@
        
        @include("components.navbar") 
 
-       <div style="background-image: url('{{ asset('img/bannerAlquilar.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
-        @include("components.alquilarVehiculos")
+       {{-- <div style="background-image: url('{{ asset('img/bannerAlquilar.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
+        @include("components.alquilarVehiculos") --}}
     </div>
        @include("components.carros")
 

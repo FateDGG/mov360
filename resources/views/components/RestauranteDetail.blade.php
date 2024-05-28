@@ -1,13 +1,13 @@
 <div class="container-fluid text-center p-4">
     <div class="row">
         <div class="col">
-            <img src="{{ asset('img/pinchadas.png') }}" class="img-fluid" style="max-height: 300px; width: 100%;" alt="Banner de pinchadas">
+            <img src="{{ asset($restaurante->url_foto) }}" class="img-fluid" style="max-height: 300px; width: 100%;" alt="Banner de pinchadas">
         </div>
     </div>
     <div class="row p-4">
         <div class="col">
             <h1>
-               Pinchadas (nombre restaurante)
+               Pinchadas ({{$restaurante->nombre}})
             </h1>
         </div>
     </div>

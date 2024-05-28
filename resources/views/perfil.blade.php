@@ -59,7 +59,7 @@
                                 <!-- Contenido del componente de tarjetas -->
                                 <div id="cardsContent" style="display: none;">
                                     <!-- Aquí va el contenido de las tarjetas -->
-                                    @include('components.infoTarjetas')
+                                    @include('components.infoTarjetas', ['tarjetas' => $tarjetas])
                                 </div>
 
                                 <!-- Contenido del componente de últimas órdenes -->
@@ -72,8 +72,13 @@
                                 <!-- Contenido del componente de centro de ayuda -->
                                 <div id="helpContent" style="display: none;">
                                     <!-- Aquí va el contenido del centro de ayuda -->
-                                    <p>Contenido del centro de ayuda</p>
-                                    @include('components.ayuda')
+                                    <p>Alquileres recientes:</p>
+                                    @include('components.ayuda', ['alquileres' => $alquileres])
+                                </div>
+                                <div id="tripsContent" style="display: none;">
+                                    <!-- Aquí va el contenido del centro de ayuda -->
+                                    <p>Mis Viajes:</p>
+                                    @include('components.viajes', ['transportes' => $transportes], ['conductores' => $conductores])
                                 </div>
                             </div>
                         </div>
@@ -112,6 +117,8 @@
         document.getElementById('cardsContent').style.display = 'none';
         document.getElementById('ordersContent').style.display = 'none';
         document.getElementById('helpContent').style.display = 'none';
+        document.getElementById('tripsContent').style.display = 'none';
+        
 
         // Mostrar el contenido correspondiente a la pestaña seleccionada
         switch (tabId) {
@@ -126,6 +133,9 @@
                 break;
             case 'v-pills-help-tab':
                 document.getElementById('helpContent').style.display = 'block';
+                break;
+            case 'v-pills-trips-tab':
+                document.getElementById('tripsContent').style.display = 'block';
                 break;
             default:
                 document.getElementById('profileInfo').style.display = 'block';

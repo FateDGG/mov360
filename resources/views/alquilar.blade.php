@@ -29,41 +29,176 @@
        @include("components.navbar") 
        
 
-<div style="background-image: url('{{ asset('img/bannerAlquilar.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
-    @include("components.alquilarVehiculos")
-</div>
+       <div style="background-image: url('{{ asset('img/bannerAlquilar.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
+        <div class="container mt-5 alquilerTitle">
+            <h1 class="mb-3 ">Carros de alquiler en Colombia</h1>
+        
+            <form id="formularioAlquiler" class="pb-4">
+              <div class="form-group">
+                <select class="form-control mb-2" name="devol" id="devol">
+                  <option>Devolución en el mismo punto</option>
+                  <option>Otra sucursal</option>
+                </select>
+        
+                <select class="form-control mb-2" name="edad" id="edad">
+                  <option>Edad del conductor: 26-65</option>
+                  <option>Menos de 25</option>
+                  <option>Más de 65</option>
+                </select>
+        
+                <select class="form-control mb-2" name="aeropuerto" id="aeropuerto">
+                  <option>Seleccionar aeropuerto o ciudad</option>
+                  @foreach ($aeropuertos as $aeropuerto)
+                    <option>{{ $aeropuerto->nombre }}</option>
+                  @endforeach
+                </select>
+        
+                <div class="d-flex justify-content-between">
+                  <input type="date" class="form-control mb-2 calendary" name="recogida" id="recogida" placeholder="lun. 13/5" />
+                  <select name="hora_recogida" id="hora_r" class="form-control mb-2 timepicker">
+                    <option>Selecciona la hora de recogida</option>
+                    <?php
+                    for ($i = 8; $i < 24; $i++) {
+                        $hora = str_pad($i, 2, "0", STR_PAD_LEFT);
+                        echo "<option value=\"$hora\">$hora</option>";
+                    }
+                    ?>
+                  </select>
+                  <input type="date" class="form-control mb-2 calendary" name="entrega" id="entrega" placeholder="lun. 20/5" />
+                  <select name="hora_entrega" id="hora_e" class="form-control mb-2 timepicker">
+                    <option>Selecciona la hora de entrega</option>
+                    <?php
+                    for ($i = 8; $i < 24; $i++) {
+                        $hora = str_pad($i, 2, "0", STR_PAD_LEFT);
+                        echo "<option value=\"$hora\">$hora</option>";
+                    }
+                    ?>
+                  </select>
+                </div>
+        
+              </div>
+            </form>
+        
+            <div class="row">
+              <div class="col-md-3 pb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Ahorra hasta un 38%</h5>
+                    <p class="card-text">Comparado con otras webs que brindan servicios similares.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Uso gratuito</h5>
+                    <p class="card-text">No hay cargos ni tasas ocultos en ninguno de nuestros servicios.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Diversidad de ofertas</h5>
+                    <p class="card-text">Encuentra diveridad de vehículos, marcas y otras características.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Reserva con flexibilidad</h5>
+                    <p class="card-text">
+                      Usa el filtro "Cancelación gratis" para encontrar opciones flexibles.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const devolSelect = document.getElementById('devol');
+            const edadSelect = document.getElementById('edad');
+            const aeropuertoSelect = document.getElementById('aeropuerto');
+            const recogidaInput = document.getElementById('recogida');
+            const horaRSelect = document.getElementById('hora_r');
+            const entregaInput = document.getElementById('entrega');
+            const horaESelect = document.getElementById('hora_e');
+    
+            const devolucionCampoOculto = document.querySelector('input[name="devolucion"]');
+            const edadConductorCampoOculto = document.querySelector('input[name="edadConductor"]');
+            const aeropuertoCiudadCampoOculto = document.querySelector('input[name="aeropuertoCiudad"]');
+            const fechaRecogidaCampoOculto = document.querySelector('input[name="fechaRecogida"]');
+            const horaRecogidaCampoOculto = document.querySelector('input[name="horaRecogida"]');
+            const fechaEntregaCampoOculto = document.querySelector('input[name="fechaEntrega"]');
+            const horaEntregaCampoOculto = document.querySelector('input[name="horaEntrega"]');
+    
+            // Agregar eventos change para cada select
+            devolSelect.addEventListener('change', asignarValorCampoOculto(devolucionCampoOculto, devolSelect));
+            edadSelect.addEventListener('change', asignarValorCampoOculto(edadConductorCampoOculto, edadSelect));
+            aeropuertoSelect.addEventListener('change', asignarValorCampoOculto(aeropuertoCiudadCampoOculto, aeropuertoSelect));
+            recogidaInput.addEventListener('change', asignarValorCampoOculto(fechaRecogidaCampoOculto, recogidaInput));
+            horaRSelect.addEventListener('change', asignarValorCampoOculto(horaRecogidaCampoOculto, horaRSelect));
+            entregaInput.addEventListener('change', asignarValorCampoOculto(fechaEntregaCampoOculto, entregaInput));
+            horaESelect.addEventListener('change', asignarValorCampoOculto(horaEntregaCampoOculto, horaESelect));
+    
+            // Función para asignar el valor seleccionado al campo oculto
+            function asignarValorCampoOculto(campoOculto, input) {
+                // return function() {
+                //     const textoSeleccionado = select.options[select.selectedIndex].text;
+                //     campoOculto.value = textoSeleccionado;
+                // };
+                return function() {
+                    let textoSeleccionado;
+                    if (input.type === 'date') {
+                        const fechaSeleccionada = new Date(input.value);
+                        textoSeleccionado = fechaSeleccionada.toISOString().split('T')[0]; // Convertir fecha a ISO y tomar solo la parte de la fecha
+                    } else {
+                        textoSeleccionado = input.options[input.selectedIndex].text;
+                    }
+                    campoOculto.value = textoSeleccionado;
+                };
+            }
+        });
+    </script>
 
+</body>
 <div class="container text-center">
     <div class="row row-cols-4 pb-2">
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
-      <div class="col pb-4 pt-4">@include("components.carCard")</div>
+        @foreach($vehiculos as $vehiculo)
+            <div class="col pb-4 pt-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{$vehiculo->url_foto}}" class="card-img-top" alt="{{$vehiculo->marca}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$vehiculo->marca}}</h5>
+                        <p class="card-text"><strong>Precio por día por 30 días</strong></p>
+                        <p class="card-text text-danger fs-4 fw-bold">{{$vehiculo->precio}}</p>
+                        <p class="card-text"><strong>{{$vehiculo->modelo}}</strong> o similar</p>
+                        
+                        <form method="POST" action="{{ route('procesarFormulario') }}">
+                            @csrf
+                            <!-- Campos ocultos para la información del vehículo -->
+                            <input type="hidden" name="devolucion" value="">
+                            <input type="hidden" name="edadConductor" value="">
+                            <input type="hidden" name="aeropuertoCiudad" value="">
+                            <input type="hidden" name="fechaRecogida" value="">
+                            <input type="hidden" name="horaRecogida" value="">
+                            <input type="hidden" name="fechaEntrega" value="">
+                            <input type="hidden" name="horaEntrega" value="">
+                            <input type="hidden" name="marca" value="{{$vehiculo->marca}}">
+                            <input type="hidden" name="modelo" value="{{$vehiculo->modelo}}">
+                            <input type="hidden" name="precio" value="{{$vehiculo->precio}}">                         
+                            <button type="submit" class="btn btn-danger">Alquilar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
-  </div>
-  </body>
-
-
-  <script>
-    $(document).ready(function(){
-        $('.timepicker').timepicker({
-            showMeridian: false, // Mostrar formato de 24 horas
-            defaultTime: '12:00' // Hora predeterminada (opcional)
-        });
-    });
-</script>
-  <script>
-    $(document).ready(function(){
-        $('.calendary').datepicker({
-            format: 'D dd/mm', // Formato de fecha
-            autoclose: true, // Cierra automáticamente después de seleccionar una fecha
-            todayHighlight: true, // Destaca la fecha actual
-            language: 'es' // Idioma español
-        });
-    });
-</script>
-        
+</div>
        @extends("components.footer")  
-    </body>
+</body>
+
 </html>
