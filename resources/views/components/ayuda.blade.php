@@ -17,6 +17,7 @@
                     <p class="card-text mb-1"><small class="text-muted">Lugar de entrega: {{ $alquiler->lugar_entrega}}</small></p>
                     <p class="card-text mb-1"><small class="text-muted">Precio: {{ $alquiler->precio_total}}</small></p>
                     <div class="d-flex">
+                        <a href="{{ url('/Ubicacion') }}" class="btn btn-info btn-sm">Ver Ubicación</a>
                         <form action="{{ route('mostrarFormularioCancelacion') }}" method="GET">
                             <input type="hidden" name="id" value="{{ $alquiler->id }}">
                             <button type="submit" class="btn btn-danger">Cancelar</button>

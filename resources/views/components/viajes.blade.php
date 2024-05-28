@@ -18,6 +18,7 @@
                 <p class="card-text mb-1"><small class="text-muted">Placa: {{$conductor->placa}}</small></p>
                 <p class="card-text mb-1"><small class="text-muted">Precio: {{$transporte->precio}}</small></p>
                 <div class="d-flex">
+                    <a href="{{ url('/Ubicacion') }}" class="btn btn-info btn-sm">Ver Ubicación</a>
                     <form action="{{ route('formularioCancelacionTransporte') }}" method="GET">
                         <input type="hidden" name="id" value="{{ $transporte->id }}">
                         <button type="submit" class="btn btn-danger">Cancelar</button>

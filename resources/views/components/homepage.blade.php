@@ -6,9 +6,31 @@
     <h5 class="banner-text">
         Registrate y obten descuentos especiales en tus primeros servicios
     </h5>
-        <a href="{{ url('/Ingreso') }}"><button class="btn btn-primary banner-button" type="button">Registrate</button></a>
+    <a href="{{ url('/Ingreso') }}">
+      <button id="registerButton" class="btn btn-primary banner-button" type="button">Registrate</button>
+    </a>
     </div>
 </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="loggedInModal" tabindex="-1" role="dialog" aria-labelledby="loggedInModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loggedInModalLabel">Información</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Ya estás logueado.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ESC</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <div class="container text-center home-page-cards">
     <h3 > ¿Que servicios necesitas? </h3>
 
@@ -72,7 +94,7 @@
         <div class="card mb-3">
             <img src="{{ asset('img/registrarConductor.png') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Registrate como conductor</h5>
+              <h5 class="card-title">Postulate como conductor</h5>
               <p class="card-text">Solicita el registro como conductor para hacer parte de nuestra plataforma</p>
               <a href="{{url('/RegistroDeConductor')}}" class="btn btn-primary">Registrate</a>
             </div>
@@ -82,7 +104,7 @@
         <div class="card mb-3">
             <img src="{{ asset('img/registraEmpresa.jpeg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Registra tu comercio/restaurante</h5>
+              <h5 class="card-title">Postula tu comercio/restaurante</h5>
               <p class="card-text">Registra tu comercio o restaurante para ampliar la cobertura de tu negocio haciendo parte de nuestra plataforma</p>
               <a href="{{url('/RegistroDeEmpresa')}}" class="btn btn-primary">Registrate</a>
             </div>
@@ -90,3 +112,18 @@
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const isLoggedIn = @json(auth()->check());
+          const registerButton = document.getElementById('registerButton');
+          
+          registerButton.addEventListener('click', function(event) {
+              if (isLoggedIn) {
+                  event.preventDefault();
+                  $('#loggedInModal').modal('show');
+              }
+          });
+      });
+  </script>

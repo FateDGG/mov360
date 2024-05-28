@@ -29,7 +29,7 @@
     </form>
     <form action="{{ route('logout') }}" method="POST">
         @csrf
-        <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Cerrar otras sesiones</button></div>
+        <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="submit">Cerrar Sesión</button></div>
     </form>
     
     

@@ -25,7 +25,7 @@ class LoginController extends Controller
             if ($user->role==='admin') {
                 return redirect('/AdminEmp')->with('success', '¡Has iniciado sesión correctamente como administrador!');
             } elseif ($user->role==='cliente') {
-                return redirect('/')->with('success', '¡Has iniciado sesión correctamente!');
+                return redirect('/');
             }
 
             // O cualquier otro rol adicional que necesites manejar

@@ -31,18 +31,20 @@
 
        <div style="background-image: url('{{ asset('img/bannerAlquilar.png') }}'); background-size: cover; background-repeat: no-repeat; height: 600px; display: flex; justify-content: center; align-items: center;">
         <div class="container mt-5 alquilerTitle">
-            <h1 class="mb-3 ">Carros de alquiler en Colombia</h1>
+            <h1 class="mb-3 ">Vehículos de alquiler en Colombia</h1>
         
             <form id="formularioAlquiler" class="pb-4">
               <div class="form-group">
                 <select class="form-control mb-2" name="devol" id="devol">
+                  <option>Selecciona el lugar de devolución</option>
                   <option>Devolución en el mismo punto</option>
                   <option>Otra sucursal</option>
                 </select>
         
                 <select class="form-control mb-2" name="edad" id="edad">
-                  <option>Edad del conductor: 26-65</option>
+                  <option>Selecciona la edad del conductor</option>
                   <option>Menos de 25</option>
+                  <option>26-65</option>
                   <option>Más de 65</option>
                 </select>
         

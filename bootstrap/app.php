@@ -16,14 +16,12 @@ return Application::configure(basePath: dirname(__DIR__))
         
         $middleware->alias([
             
-            'NotAuthenticated' => RedirectIfNotAuthenticated::class,
-
-        ]);
-
-        $middleware->alias([
-            
+            'RedirectIfNotAuthenticated' => RedirectIfNotAuthenticated::class,
             'AdminLocked' => AdminLocked::class,
+
         ]);
+
+
 
 
     })

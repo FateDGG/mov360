@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 Route::get('/Domicilios', function () {
     return view('domicilios');
-})->middleware('NotAuthenticated');
+});
 
 Route::get('/DomPage', function () {
     return view ('components/domiciliosPage');
@@ -18,11 +18,11 @@ Route::get('/DomPage', function () {
 
 Route::get('/Alquilar_Vehiculo', function () {
     return view('alquilar');
-})->middleware('NotAuthenticated');
+})->middleware('RedirectIfNotAuthenticated');;
 
 Route::get('/Solicitar_Transporte', function () {
     return view('transporte');
-})->middleware('NotAuthenticated');
+})->middleware('RedirectIfNotAuthenticated');;
 
 Route::get('/Ingreso', function () {
     return view('ingreso');
@@ -40,17 +40,17 @@ Route::get('/Carrito', function () {
 });
 Route::get('/Pagos', function () {
     return view('pagar');
-});
+})->middleware('RedirectIfNotAuthenticated');;
 Route::get('/PagosTransporte', function () {
     return view('pagarTransporte');
-});
+})->middleware('RedirectIfNotAuthenticated');;
 
 Route::get('/PagosAlquilado', function () {
     return view('pagarAlquilado');
-});
+})->middleware('RedirectIfNotAuthenticated');;
 Route::get('/AñadirTarjeta', function () {
     return view('añadirTarjeta');
-});
+})->middleware('RedirectIfNotAuthenticated');;
 Route::get('/carros', function () {
     return view('carro');
 },);
@@ -87,10 +87,10 @@ Route::get('/PostulacionesConductores', function () {
 })->middleware('AdminLocked');
 Route::get('/Profile', function () {
     return view('perfil');
-})->middleware('NotAuthenticated');
+})->middleware('RedirectIfNotAuthenticated');;
 Route::get('/Secciones', function () {
     return view('secciones');
-})->middleware('NotAuthenticated');
+})->middleware('RedirectIfNotAuthenticated');;
 
 // Route::get('/Restaurante', function () {
 //     return view('restaurante');
@@ -102,12 +102,12 @@ Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register'
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
-Route::get('/Domicilios', 'App\Http\Controllers\RestaurantesController@showRestaurants')->name('restaurantes')->middleware('NotAuthenticated');
-Route::get('/Secciones', 'App\Http\Controllers\RestaurantesController@mostrarPorCategoria')->name('catrestaurantes');
+Route::get('/Domicilios', 'App\Http\Controllers\RestaurantesController@showRestaurants')->name('restaurantes')->middleware('RedirectIfNotAuthenticated');;
+Route::get('/Secciones', 'App\Http\Controllers\RestaurantesController@mostrarPorCategoria')->name('catrestaurantes')->middleware('RedirectIfNotAuthenticated');
 
 Route::post('/Profile', 'App\Http\Controllers\Auth\LoginController@update')->name('user.update');
 
-Route::get('/Alquilar_Vehiculo', 'App\Http\Controllers\AeropuertosController@showAeropuertos')->name('aeropuertos');
+Route::get('/Alquilar_Vehiculo', 'App\Http\Controllers\AeropuertosController@showAeropuertos')->name('aeropuertos')->middleware('RedirectIfNotAuthenticated');;
 
 Route::post('/procesarFormulario', 'App\Http\Controllers\AlquilerController@procesarFormulario')->name('procesarFormulario');
 
@@ -119,7 +119,7 @@ Route::get('/añadir', function () {
 
 Route::post('/añadir', 'App\Http\Controllers\TarjetaController@guardarTarjeta')->name('añadir');
 
-Route::get('/Profile', 'App\Http\Controllers\TarjetaController@mostrarTarjetas')->name('mostrarTarjetas');
+Route::get('/Profile', 'App\Http\Controllers\TarjetaController@mostrarTarjetas')->name('mostrarTarjetas')->middleware('RedirectIfNotAuthenticated');;
 
 Route::delete('/Profile', 'App\Http\Controllers\TarjetaController@eliminarTarjeta')->name('tarjetas.eliminar');
 
@@ -127,7 +127,7 @@ Route::post('/guardar-alquiler', 'App\Http\Controllers\AlquilerController@guarda
 
 // Route::get('/mostrarAlquileres', 'App\Http\Controllers\AlquilerController@mostrarAlquileres')->name('mostrarAlquileres');
 
-Route::get('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@showFormulario')->name('transporte');
+Route::get('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@showFormulario')->name('transporte')->middleware('RedirectIfNotAuthenticated');;
 Route::post('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@solicitarTransporte')->name('solicitar_transporte');
 
 use App\Http\Controllers\RestauranteController;

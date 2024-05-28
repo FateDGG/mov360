@@ -77,7 +77,7 @@
                     </td>
                     <td>{{$compra->valor}}</td>
                     <td>
-                      <button class="btn btn-info btn-sm">Ver Ubicación</button>
+                      <a href="{{ url('/Ubicacion') }}" class="btn btn-info btn-sm">Ver Ubicación</a>
                       <form method="POST" action="{{ route('cancelar_compra', ['id' => $compra->id]) }}" style="display: inline;">
                         @csrf
                         @method('DELETE')
@@ -126,7 +126,7 @@
                   <td>{{$transporte->nombre_conductor}}</td>
                   <td>{{$transporte->precio}}</td>
                   <td>
-                    <button class="btn btn-info btn-sm">Ver Ubicación</button>
+                    <a href="{{ url('/Ubicacion') }}" class="btn btn-info btn-sm">Ver Ubicación</a>
                     <form method="POST" action="{{ route('cancelar_viaje', ['id' => $transporte->id]) }}" style="display: inline;">
                       @csrf
                       @method('DELETE')
@@ -177,7 +177,7 @@
                     <td>{{$alquiler->vehiculo_nombre}} {{$alquiler->vehiculo_modelo}}</td>
                     <td>{{$alquiler->fecha_entrega}}</td>
                     <td>
-                      <button class="btn btn-info btn-sm">Ver Ubicación</button>
+                      <a href="{{ url('/Ubicacion') }}" class="btn btn-info btn-sm">Ver Ubicación</a>
                       <form method="POST" action="{{ route('cancelar_alquiler', ['id' => $alquiler->id]) }}" style="display: inline;">
                         @csrf
                         @method('DELETE')

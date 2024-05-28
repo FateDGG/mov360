@@ -44,6 +44,7 @@
                     <p class="card-text mb-1"><small class="text-muted">Total: $ {{$compra->valor}}</small></p>
 
                     <!-- Formulario para cancelar el pedido -->
+                    <a href="{{ url('/Ubicacion') }}" class="btn btn-info btn-sm">Ver Ubicación</a>
                     <form action="{{ route('formularioCancelacionPedido') }}" method="GET">
                         @csrf
                         <input type="hidden" name="id" value="{{ $compra->id }}">
