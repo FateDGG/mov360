@@ -58,12 +58,22 @@
                 <div id="map" class="mt-4">
                     
                 </div> 
+                <div class="container">
+                    <div>
+                        <button type="button" id="alertButton" class="btn btn-danger pt-2 mt-5" aria-label="Close">Alertar a policía</button>
+                    </div>
+                </div>
+            
             </div>
            
           </div>
         </div>
       </div>
-    
+    <script>
+        document.getElementById('alertButton').addEventListener('click', function() {
+            alert("Se ha enviado una alerta a la policía correctamente");
+        });
+    </script>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
