@@ -6,6 +6,7 @@ use App\Models\Tarjeta;
 use App\Models\Alquiler;
 use App\Models\Conductor;
 use App\Models\Transporte;
+use App\Models\Compra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,14 +52,14 @@ class TarjetaController extends Controller
         $alquileres = Alquiler::where('id_usuario', $user->id)->get();
         // Obtener todas las tarjetas asociadas a este usuario
         $tarjetas = Tarjeta::where('id_usuario', $user->id)->get();
-
+        $compras = Compra::where('id_usuario', $user->id)->get();
         $transportes = Transporte::where('id_usuario', $user->id)->get();
         $nombresConductores = $transportes->pluck('nombre_conductor')->unique();
         // Obtener todos los conductores que coinciden con los nombres obtenidos
         $conductores = Conductor::whereIn('nombre', $nombresConductores)->get();
         
         // Pasar las tarjetas a la vista
-        return view('perfil', compact('tarjetas', 'alquileres', 'transportes', 'conductores'));
+        return view('perfil', compact('tarjetas', 'alquileres', 'transportes', 'conductores','compras'));
         
     }
     
