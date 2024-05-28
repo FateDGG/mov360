@@ -60,6 +60,27 @@ Route::get('/RegistroDeConductor', function () {
 Route::get('/RegistroDeEmpresa', function () {
     return view('registrarEmpresa');
 });
+Route::get('/AdminEmp', function () {
+    return view('AdminEmpresas');
+});
+Route::get('/AdminConduc', function () {
+    return view('AdminConductores');
+});
+Route::get('/AdminUser', function () {
+    return view('AdminUsers');
+});
+Route::get('/PostulacionesEmpresas', function () {
+    return view('postulacionesEmpresas');
+});
+Route::get('/CrearEmpresa', function () {
+    return view('AdmnCrearEmpresa');
+});
+Route::get('/AgregarConductor', function () {
+    return view('admnCrearConductor');
+});
+Route::get('/PostulacionesConductores', function () {
+    return view('postulacionesConductores');
+});
 Route::get('/Profile', function () {
     return view('perfil');
 })->middleware('NotAuthenticated');
