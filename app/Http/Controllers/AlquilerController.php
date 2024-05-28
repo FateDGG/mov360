@@ -61,4 +61,45 @@ class AlquilerController extends Controller
         return redirect('/')->with('success', 'Alquiler guardado correctamente');
     }
 
+        public function mostrarFormularioCancelacion(Request $request)
+        {
+            $id = $request->input('id');
+
+            // Obtener el alquiler por ID
+            $alquiler = Alquiler::find($id);
+
+            if (!$alquiler) {
+                return redirect()->route('home')->with('error_message', '¡Alquiler no encontrado!');
+            }
+
+            // Pasar el alquiler a la vista de cancelación
+            return view('cancelarAlquiler', compact('alquiler'));
+        }
+        public function cancelar(Request $request)
+    {
+        // Validar la solicitud
+        $request->validate([
+            'alquiler_id' => 'required|exists:alquileres,id',
+            'cancelReason' => 'required|string|max:255',
+        ]);
+
+        // Obtener el alquiler y eliminarlo
+        $alquiler = Alquiler::find($request->alquiler_id);
+        
+        if ($alquiler) {
+            // Puedes registrar la razón de la cancelación en un registro separado si es necesario
+            $razon = $request->cancelReason;
+
+            // Eliminar el alquiler
+            $alquiler->delete();
+            
+            // Redirigir con un mensaje de éxito
+            return redirect('/Profile')->with('success_message', '¡Alquiler cancelado con éxito!');
+        }
+
+        // Redirigir con un mensaje de error si no se encuentra el alquiler
+        return redirect('/Profile')->with('error_message', '¡Alquiler no encontrado!');
+    }
+
+
 }

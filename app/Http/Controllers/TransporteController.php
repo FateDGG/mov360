@@ -51,5 +51,44 @@ class TransporteController extends Controller
         // Puedes retornar una respuesta JSON u otro tipo de respuesta según lo necesites
         return redirect('/Profile')->with('success', 'Transporte guardado correctamente');
     }
+    public function formularioCancelacionTransporte(Request $request)
+        {
+            $id = $request->input('id');
+
+            // Obtener el alquiler por ID
+            $transporte = Transporte::find($id);
+
+            if (!$transporte) {
+                return redirect('/Profile')->with('error_message', '¡Viaje no encontrado!');
+            }
+
+            // Pasar el alquiler a la vista de cancelación
+            return view('cancelarTransporte', compact('transporte'));
+        }
     
+        public function cancelarViaje(Request $request)
+    {
+        // Validar la solicitud
+        $request->validate([
+            'transporte_id' => 'required|exists:transportes,id',
+            'cancelReason' => 'required|string|max:255',
+        ]);
+
+        // Obtener el alquiler y eliminarlo
+        $transporte = Transporte::find($request->transporte_id);
+        
+        if ($transporte) {
+            // Puedes registrar la razón de la cancelación en un registro separado si es necesario
+            $razon = $request->cancelReason;
+
+            // Eliminar el alquiler
+            $transporte->delete();
+            
+            // Redirigir con un mensaje de éxito
+            return redirect('/Profile')->with('success_message', '¡Transporte cancelado con éxito!');
+        }
+
+        // Redirigir con un mensaje de error si no se encuentra el alquiler
+        return redirect('/Profile')->with('error_message', '¡Transporte no encontrado!');
+    }
 }
