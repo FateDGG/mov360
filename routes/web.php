@@ -69,12 +69,17 @@ Route::get('/AdminConduc', function () {
 Route::get('/AdminPedidos', function () {
     return view('AdminUsers');
 });
-
+Route::get('/Conductores', function () {
+    return view('conductoView');
+});
 Route::get('/PostulacionesEmpresas', function () {
     return view('postulacionesEmpresas');
 });
 Route::get('/CrearEmpresa', function () {
     return view('AdmnCrearEmpresa');
+});
+Route::get('/Ubicacion', function () {
+    return view('ubicacion');
 });
 Route::get('/AgregarConductor', function () {
     return view('admnCrearConductor');
