@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdminLocked;
 use App\Http\Middleware\RedirectIfNotAuthenticated;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -16,7 +17,14 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             
             'NotAuthenticated' => RedirectIfNotAuthenticated::class,
+
         ]);
+
+        $middleware->alias([
+            
+            'AdminLocked' => AdminLocked::class,
+        ]);
+
 
     })
     ->withExceptions(function (Exceptions $exceptions) {

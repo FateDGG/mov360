@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cliente;
+
 class LoginController extends Controller
 {
-    //
     public function login(Request $request)
     {
         // Valida los datos del formulario
@@ -20,13 +20,21 @@ class LoginController extends Controller
         // Intenta autenticar al usuario
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Si las credenciales son válidas, el usuario está autenticado
-            return redirect('/')->with('success', '¡Has iniciado sesión correctamente!');
+            $user = Auth::user();
+
+            if ($user->role==='admin') {
+                return redirect('/AdminEmp')->with('success', '¡Has iniciado sesión correctamente como administrador!');
+            } elseif ($user->role==='cliente') {
+                return redirect('/')->with('success', '¡Has iniciado sesión correctamente!');
+            }
+
+            // O cualquier otro rol adicional que necesites manejar
         }
 
         // Si las credenciales no son válidas, redirige de nuevo al formulario de inicio de sesión con un mensaje de error
         return redirect()->back()->with('error', 'Credenciales incorrectas');
-
     }
+
     public function logout(Request $request)
     {
         Auth::logout(); // Cierra la sesión del usuario
@@ -37,6 +45,7 @@ class LoginController extends Controller
 
         return redirect('/'); // Redirige a la página de inicio u otra página según tu aplicación
     }
+
     public function update(Request $request)
     {
         $cliente = Cliente::find(Auth::id());
@@ -45,8 +54,6 @@ class LoginController extends Controller
         $cliente->update($request->only(['nombre', 'email', 'telefono', 'documento', 'fechaNac', 'genero']));
 
         return redirect()->back()->with('success', 'Información actualizada exitosamente');
-            // Eliminar campos vacíos del array de datos del formulario
-
+        // Eliminar campos vacíos del array de datos del formulario
     }
-
 }

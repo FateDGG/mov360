@@ -62,31 +62,31 @@ Route::get('/RegistroDeEmpresa', function () {
 });
 Route::get('/AdminEmp', function () {
     return view('AdminEmpresas');
-});
+})->middleware('AdminLocked');
 Route::get('/AdminConduc', function () {
     return view('AdminConductores');
-});
+})->middleware('AdminLocked');
 Route::get('/AdminPedidos', function () {
     return view('AdminUsers');
-});
+})->middleware('AdminLocked');
 Route::get('/Conductores', function () {
     return view('conductoView');
 });
 Route::get('/PostulacionesEmpresas', function () {
     return view('postulacionesEmpresas');
-});
+})->middleware('AdminLocked');
 Route::get('/CrearEmpresa', function () {
     return view('AdmnCrearEmpresa');
-});
+})->middleware('AdminLocked');
 Route::get('/Ubicacion', function () {
     return view('ubicacion');
 });
 Route::get('/AgregarConductor', function () {
     return view('admnCrearConductor');
-});
+})->middleware('AdminLocked');
 Route::get('/PostulacionesConductores', function () {
     return view('postulacionesConductores');
-});
+})->middleware('AdminLocked');
 Route::get('/Profile', function () {
     return view('perfil');
 })->middleware('NotAuthenticated');

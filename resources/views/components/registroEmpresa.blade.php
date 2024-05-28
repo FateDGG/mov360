@@ -20,12 +20,8 @@
               <input type="text" class="form-control" id="legalRepresentative" placeholder="Enter legal representative name">
             </div>
             <div class="form-section">
-              <label for="coverage" class="text-primary font-weight-bold">Coverage</label>
-              <input type="text" class="form-control" id="coverage" placeholder="Enter coverage information">
-            </div>
-            <div class="form-section">
-              <label for="locations" class="text-primary font-weight-bold">Locations</label>
-              <input type="text" class="form-control" id="locations" placeholder="Enter locations where the company is present">
+              <label for="locations" class="text-primary font-weight-bold">Location</label>
+              <input type="text" class="form-control" id="locations" placeholder="Enter the company's adress">
             </div>
             <div class="form-section">
               <label for="contactEmail" class="text-primary font-weight-bold">Contact Email</label>
@@ -35,7 +31,7 @@
               <label for="contactPhone" class="text-primary font-weight-bold">Contact Phone</label>
               <input type="tel" class="form-control" id="contactPhone" placeholder="Enter contact phone number">
             </div>
-            <div class="form-section">
+            {{-- <div class="form-section">
               <label for="companyLogo" class="text-primary font-weight-bold">Company Logo</label>
               <input type="file" class="form-control-file" id="companyLogo">
             </div>
@@ -48,9 +44,9 @@
               <select id="tipo_empresa" name="tipo_empresa" class="form-control">
                 <option value="restaurante">Restaurante</option>
                 <option value="vehiculos">Empresa de Renta de Vehículos</option>
-              </select>
-            </div>
-            <div id="vehiculos_fields" class="form-section d-none">
+              </select> --}}
+            {{-- </div> --}}
+            {{-- <div id="vehiculos_fields" class="form-section d-none">
               <label for="menu" class="text-primary font-weight-bold">Upload Catalogo PDF</label>
               <input type="file" id="menu" accept=".pdf" class="form-control-file">
             </div>
@@ -123,7 +119,7 @@
             
               <label for="menu" class="text-primary font-weight-bold">Upload Menu PDF</label>
               <input type="file" id="menu" accept=".pdf" class="form-control-file">
-            </div>
+            </div> --}}
             <button type="submit" class="btn btn-primary btn-block mt-4">Enviar</button>
           </form>
         </div>
