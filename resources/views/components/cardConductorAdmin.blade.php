@@ -9,7 +9,7 @@
       <form method="POST" action="{{ route('eliminar_conductor', ['id' => $conductor->id]) }}" style="display: inline;">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta empresa?')">Delete</button>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este conductor?')">Delete</button>
       </form>
     </li>
   @endforeach

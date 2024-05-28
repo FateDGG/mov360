@@ -166,3 +166,9 @@ Route::get('/AdminConduc', 'App\Http\Controllers\ConductorController@index')->mi
 Route::post('/agregar_conductor', 'App\Http\Controllers\ConductorController@store')->name('conductor.store')->middleware('AdminLocked');
 
 Route::delete('/conductor/{id}', 'App\Http\Controllers\ConductorController@destroy')->name('eliminar_conductor')->middleware('AdminLocked');
+
+Route::get('/AdminPedidos', 'App\Http\Controllers\ServiciosController@index')->middleware('AdminLocked');
+
+Route::delete('/pedidos/{id}', 'App\Http\Controllers\ServiciosController@destroyCompra')->name('cancelar_compra')->middleware('AdminLocked');
+Route::delete('/alquileres/{id}', 'App\Http\Controllers\ServiciosController@destroyAlquiler')->name('cancelar_alquiler')->middleware('AdminLocked');
+Route::delete('/viajes/{id}', 'App\Http\Controllers\ServiciosController@destroyTransporte')->name('cancelar_viaje')->middleware('AdminLocked');

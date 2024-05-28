@@ -64,8 +64,28 @@
               </thead>
               <tbody>
                 <!-- Ejemplo de Fila de Pedido -->
-                @include("components.cardListaPedidos")
-                @include("components.cardListaPedidos")
+                @foreach ($compras as $compra)
+                  <tr>
+                    <td>{{ $compra->id }}</td>
+                    <td>
+                      @foreach ($clientes as $cliente)
+                        @if ($cliente->id == $compra->id_usuario)
+                            {{ $cliente->nombre }}
+                            @break
+                        @endif
+                      @endforeach
+                    </td>
+                    <td>{{$compra->valor}}</td>
+                    <td>
+                      <button class="btn btn-info btn-sm">Ver Ubicación</button>
+                      <form method="POST" action="{{ route('cancelar_compra', ['id' => $compra->id]) }}" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button  type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este servicio?')" >Cancelar Servicio</button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
                 <!-- Más filas aquí -->
               </tbody>
             </table>
@@ -74,12 +94,12 @@
           <!-- Filtro de Transportes -->
           <div class="table-container">
             <h2 class="text-center text-secondary">Listado de Transportes</h2>
-            <form class="mb-4">
+            {{-- <form class="mb-4">
               <div class="form-group">
                 <label for="searchTransportes" class="text-primary">Buscar por ID de Pedido o Usuario</label>
                 <input type="text" class="form-control" id="searchTransportes" placeholder="Ingrese ID de Pedido o Nombre de Usuario">
               </div>
-            </form>
+            </form> --}}
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
@@ -92,8 +112,29 @@
               </thead>
               <tbody>
                 <!-- Ejemplo de Fila de Transporte -->
-                @include("components.carListaTransporte")
-                @include("components.carListaTransporte")
+                @foreach($transportes as $transporte)
+                <tr>
+                  <td>{{ $transporte->id }}</td>
+                  <td>
+                    @foreach ($clientes as $cliente)
+                        @if ($cliente->id == $transporte->id_usuario)
+                            {{ $cliente->nombre }}
+                            @break
+                        @endif
+                      @endforeach
+                  </td>
+                  <td>{{$transporte->nombre_conductor}}</td>
+                  <td>{{$transporte->precio}}</td>
+                  <td>
+                    <button class="btn btn-info btn-sm">Ver Ubicación</button>
+                    <form method="POST" action="{{ route('cancelar_viaje', ['id' => $transporte->id]) }}" style="display: inline;">
+                      @csrf
+                      @method('DELETE')
+                      <button  type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este servicio?')" >Cancelar Servicio</button>
+                    </form>
+                  </td>
+                </tr>
+                @endforeach
                 <!-- Más filas aquí -->
               </tbody>
             </table>
@@ -102,12 +143,12 @@
           <!-- Filtro de Alquileres -->
           <div class="table-container">
             <h2 class="text-center text-secondary">Listado de Alquileres</h2>
-            <form class="mb-4">
+            {{-- <form class="mb-4">
               <div class="form-group">
                 <label for="searchAlquileres" class="text-primary">Buscar por ID de Pedido o Usuario</label>
                 <input type="text" class="form-control" id="searchAlquileres" placeholder="Ingrese ID de Pedido o Nombre de Usuario">
               </div>
-            </form>
+            </form> --}}
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
@@ -121,8 +162,30 @@
               </thead>
               <tbody>
                 <!-- Ejemplo de Fila de Alquiler -->
-                @include("components.cardListaAlquiler")
-                @include("components.cardListaAlquiler")
+                @foreach($alquileres as $alquiler)
+                  <tr>
+                    <td>{{$alquiler->id}}</td>
+                    <td>
+                      @foreach ($clientes as $cliente)
+                        @if ($cliente->id == $alquiler->id_usuario)
+                            {{ $cliente->nombre }}
+                            @break
+                        @endif
+                      @endforeach
+                    </td>
+                    <td>{{$alquiler->precio_total}}</td>
+                    <td>{{$alquiler->vehiculo_nombre}} {{$alquiler->vehiculo_modelo}}</td>
+                    <td>{{$alquiler->fecha_entrega}}</td>
+                    <td>
+                      <button class="btn btn-info btn-sm">Ver Ubicación</button>
+                      <form method="POST" action="{{ route('cancelar_alquiler', ['id' => $alquiler->id]) }}" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button  type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este servicio?')" >Cancelar Servicio</button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
                 <!-- Más filas aquí -->
               </tbody>
             </table>
