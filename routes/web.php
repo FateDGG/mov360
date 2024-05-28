@@ -115,7 +115,7 @@ Route::post('/AñadirTarjeta', 'App\Http\Controllers\TarjetaController@guardarTa
 
 Route::get('/añadir', function () {
     return view('components.tarjeta');
-})->middleware('NotAuthenticated');
+})->middleware('RedirectIfNotAuthenticated');
 
 Route::post('/añadir', 'App\Http\Controllers\TarjetaController@guardarTarjeta')->name('añadir');
 
@@ -132,7 +132,7 @@ Route::post('/Solicitar_Transporte', 'App\Http\Controllers\TransporteController@
 
 use App\Http\Controllers\RestauranteController;
 
-Route::get('/Restaurante', 'App\Http\Controllers\RestaurantesController@show')->name('restaurante.show')->middleware('NotAuthenticated');
+Route::get('/Restaurante', 'App\Http\Controllers\RestaurantesController@show')->name('restaurante.show')->middleware('RedirectIfNotAuthenticated');
 
 Route::get('/Carrito', 'App\Http\Controllers\CompraController@mostrarCarrito')->name('carrito.mostrar');
 Route::post('/Carrito/agregar', 'App\Http\Controllers\CompraController@agregarElementoCarrito')->name('carrito.agregar');
