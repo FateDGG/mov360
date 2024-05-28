@@ -66,7 +66,7 @@
                                 <div id="ordersContent" style="display: none;">
                                     <!-- Aquí va el contenido de las últimas órdenes -->
                                     <p>Contenido de las últimas órdenes</p>
-                                    @include('components.infoOrdenes')
+                                    @include('components.infoOrdenes', ['compras' => $compras])
                                 </div>
 
                                 <!-- Contenido del componente de centro de ayuda -->
