@@ -66,9 +66,10 @@ Route::get('/AdminEmp', function () {
 Route::get('/AdminConduc', function () {
     return view('AdminConductores');
 });
-Route::get('/AdminUser', function () {
+Route::get('/AdminPedidos', function () {
     return view('AdminUsers');
 });
+
 Route::get('/PostulacionesEmpresas', function () {
     return view('postulacionesEmpresas');
 });
@@ -135,3 +136,13 @@ Route::post('/Carrito/agregar', 'App\Http\Controllers\CompraController@agregarEl
 Route::post('/Pagos', 'App\Http\Controllers\CompraController@realizarPago')->name('compra.pagar');
 Route::delete('/Carrito/{key}', 'App\Http\Controllers\CompraController@eliminarProducto')->name('carrito.eliminar');
 Route::post('/pagar', 'App\Http\Controllers\CompraController@pagar')->name('pagar');
+
+Route::get('/CancelarAlquiler', function () {
+    return view('cancelarAlquiler');
+});
+Route::get('/CancelarPedido', function () {
+    return view('cancelarPedido');
+});
+Route::get('/CancelarTransporte', function () {
+    return view('cancelarTransporte');
+});
