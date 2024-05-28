@@ -69,7 +69,9 @@ Route::get('/AdminConduc', function () {
 Route::get('/AdminPedidos', function () {
     return view('AdminUsers');
 });
-
+Route::get('/Conductores', function () {
+    return view('conductoView');
+});
 Route::get('/PostulacionesEmpresas', function () {
     return view('postulacionesEmpresas');
 });
