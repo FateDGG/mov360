@@ -26,7 +26,10 @@ class LoginController extends Controller
                 return redirect('/AdminEmp')->with('success', '¡Has iniciado sesión correctamente como administrador!');
             } elseif ($user->role==='cliente') {
                 return redirect('/');
+            } elseif ($user->role==='driver') {
+                return redirect('/Conductores');
             }
+
 
             // O cualquier otro rol adicional que necesites manejar
         }
