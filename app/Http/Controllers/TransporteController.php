@@ -33,11 +33,18 @@ class TransporteController extends Controller
     {
         // Obtener el ID del usuario autenticado
         $idUsuario = auth()->id();
-
-        // Obtener el nombre del conductor de forma aleatoria
+    
+        // Obtener un conductor de forma aleatoria
         $conductor = Conductor::inRandomOrder()->first();
+    
+        // Verificar si hay conductores disponibles
+        if (!$conductor) {
+            // Redirigir a la vista con un mensaje de error
+            return redirect()->back()->withErrors(['error' => 'No hay conductores disponibles. Inténtalo de nuevo más tarde.']);
+        }
+    
         $precioAleatorio = rand(5000, 25000);
-
+    
         // Crear una nueva instancia de Transporte y asignar los valores del formulario
         $transporte = new Transporte();
         $transporte->id_usuario = $idUsuario;
@@ -46,13 +53,14 @@ class TransporteController extends Controller
         $transporte->medio_pago = $request->input('metodo_pago');
         $transporte->nombre_conductor = $conductor->nombre; // Nombre del conductor aleatorio
         $transporte->precio = $precioAleatorio;
-
+    
         // Guardar el transporte en la base de datos
         $transporte->save();
-
-        // Puedes retornar una respuesta JSON u otro tipo de respuesta según lo necesites
+    
+        // Redirigir al perfil del usuario con un mensaje de éxito
         return redirect('/Profile')->with('success', 'Transporte guardado correctamente');
     }
+    
     public function formularioCancelacionTransporte(Request $request)
         {
             $id = $request->input('id');

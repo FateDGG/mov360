@@ -67,9 +67,7 @@ Route::get('/AdminConduc', function () {
 Route::get('/AdminPedidos', function () {
     return view('AdminUsers');
 })->middleware('AdminLocked');
-Route::get('/Conductores', function () {
-    return view('conductoView');
-});
+
 Route::get('/PostulacionesEmpresas', function () {
     return view('postulacionesEmpresas');
 })->middleware('AdminLocked');
@@ -172,3 +170,9 @@ Route::get('/AdminPedidos', 'App\Http\Controllers\ServiciosController@index')->m
 Route::delete('/pedidos/{id}', 'App\Http\Controllers\ServiciosController@destroyCompra')->name('cancelar_compra')->middleware('AdminLocked');
 Route::delete('/alquileres/{id}', 'App\Http\Controllers\ServiciosController@destroyAlquiler')->name('cancelar_alquiler')->middleware('AdminLocked');
 Route::delete('/viajes/{id}', 'App\Http\Controllers\ServiciosController@destroyTransporte')->name('cancelar_viaje')->middleware('AdminLocked');
+
+Route::get('/Conductores', 'App\Http\Controllers\ConductorController@mostrarPanelConductor');
+
+Route::delete('/servicios/rechazar/{id}', 'App\Http\Controllers\ConductorController@rechazarServicio')->name('rechazar_servicio');
+Route::post('/servicios/aceptar/{id}', 'App\Http\Controllers\ConductorController@aceptarServicio')->name('aceptar_servicio');
+Route::post('/servicios/finalizar/{id}', 'App\Http\Controllers\ConductorController@finalizarServicio')->name('finalizar_servicio');

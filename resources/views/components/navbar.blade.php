@@ -31,7 +31,18 @@
                 </li>
             @else <!-- Si el usuario está autenticado -->
                 <li class="nav-item perfil-button">
-                    <a class="nav-color" href="{{ url('/Profile') }}"> {{ Auth::user()->nombre }}</a>
+                    @if(Auth::user()->role === 'driver' || Auth::user()->role === 'admin')
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a class="nav-color" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            Cerrar Sesión
+                        </a>
+                    @else
+                        <a class="nav-color" href="{{ url('/Profile') }}"> {{ Auth::user()->nombre }}</a>
+                    @endif
                 </li>
             @endguest
             <li class="nav-item">

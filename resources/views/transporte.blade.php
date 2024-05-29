@@ -42,6 +42,7 @@
                       class="form-control mb-2"
                       placeholder="Introduce lugar de recogida"
                       name="lugar_recogida" 
+                      required
                     />
             
                     <input
@@ -49,8 +50,10 @@
                       class="form-control mb-2"
                       placeholder="Introduce destino"
                       name="destino" 
+                      required
                     />
-                    <select class="form-control mb-2" aria-placeholder="Seleccione metodo de pago" name="metodo_pago"> 
+                    <select class="form-control mb-2" aria-placeholder="Seleccione metodo de pago" name="metodo_pago" required> 
+                        <option>Selecciona un método de pago</option>
                         <option>Efectivo</option>
                         @foreach($tarjetas as $tarjeta)
                             <option>Tarjeta **** **** **** {{ substr($tarjeta->numero, -4) }} {{ $tarjeta->titular }}</option>
@@ -103,5 +106,24 @@
         
        </div>
        @extends("components.footer")  
+       <script>
+        document.getElementById('formulario-transporte').addEventListener('submit', function(event) {
+            var lugarRecogida = document.querySelector('input[name="lugar_recogida"]').value;
+            var destino = document.querySelector('input[name="destino"]').value;
+            var metodoPago = document.querySelector('select[name="metodo_pago"]').value;
+
+            if (!lugarRecogida || !destino || !metodoPago) {
+                alert('Debes rellenar todos los campos');
+                event.preventDefault(); // Evita que el formulario se envíe
+            }
+        });
+    </script>
+        @if ($errors->any())
+          <script>
+              window.onload = function() {
+                  alert('No hay conductores disponibles. Inténtalo de nuevo más tarde.');
+              }
+          </script>
+        @endif
     </body>
 </html>

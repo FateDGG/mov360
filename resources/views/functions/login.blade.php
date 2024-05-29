@@ -16,12 +16,12 @@
     <form action="{{ route('login') }}" method="post">
       @csrf <!-- Agrega el token CSRF -->
       <div class="container p-4 login-form">
-          <h3><label for="email" class="form-label">Ingresa tu número o correo</label></h3>
-          <input type="text" class="form-control container" id="email" name="email" aria-describedby="emailHelp" style="width: 20rem">
+          <h3><label for="email" class="form-label">Ingresa tu correo</label></h3>
+          <input type="text" class="form-control container" id="email" name="email" aria-describedby="emailHelp" style="width: 20rem" required>
       </div>
       <div class="container p-2 login-form">
           <h3><label for="password" class="form-label">Contraseña</label></h3>
-          <input type="password" class="container form-control" id="password" name="password" style="width: 20rem;">
+          <input type="password" class="container form-control" id="password" name="password" style="width: 20rem;" required>
       </div>
       <div class="container p-5 login-form">
           <button type="submit" class="btn btn-primary">Ingresar</button>
