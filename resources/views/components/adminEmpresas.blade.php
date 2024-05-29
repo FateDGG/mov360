@@ -23,7 +23,8 @@
           <button class="btn btn-success" onclick="window.location.href='{{ url('/CrearEmpresa') }}'">Create New Business</button>
         </div>
       </div>
-      <div id="businessList" class="mb-4">  
+      <div id="businessList" class="mb-4">
+        <h2 class="text-center text-secondary">Listado de Empresas</h2>  
         @foreach ($empresas as $empresa)
         <div class="card mb-3">
             <div class="row no-gutters">
@@ -46,6 +47,32 @@
             </div>
         </div>
         @endforeach
+      
+        <div id="businessList" class="mb-4">
+          <h2 class="text-center text-secondary">Listado de Empresas</h2>  
+          @foreach ($restaurantes as $restaurante)
+          <div class="card mb-3">
+              <div class="row no-gutters">
+                  <div class="col-md-4">
+                      <!-- Aquí puedes mostrar la foto de la empresa -->
+                  </div>
+                  <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ $restaurante->nombre }}</h5>
+                          <p class="card-text">Dirección: {{ $restaurante->direccion }}</p>
+                          <p class="card-text">Tipo de comida: {{ $restaurante->tipo_cocina }}</p>
+                          <!-- Agrega otros detalles de la empresa que desees mostrar -->
+                          <form method="POST" action="{{ route('eliminar_empresa', ['id' => $empresa->id]) }}" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta empresa?')">Delete</button>
+                          </form>
+  
+                      </div>
+                  </div>
+              </div>
+          </div>
+          @endforeach
       </div>
     </div>
   </div>

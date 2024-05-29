@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
+use App\Models\Restaurante;
 use Illuminate\Http\Request;
 
 
@@ -14,9 +15,10 @@ class EmpresaController extends Controller
     {
         // Obtener todas las empresas desde la base de datos
         $empresas = Empresa::all();
+        $restaurantes = Restaurante::all();
 
         // Pasar los datos de las empresas a la vista
-        return view('AdminEmpresas')->with('empresas', $empresas);
+        return view('AdminEmpresas')->with('empresas', $empresas)->with('restaurantes', $restaurantes);
     }
     public function store(Request $request)
     {

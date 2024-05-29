@@ -9,20 +9,27 @@
                 <div class="d-flex justify-content-between">
                     <h5 class="card-title">Dirección de recogida: {{$transporte->lugar_recogida }}</h5>
                     <h5 class="card-title">Dirección de llegada: {{$transporte->lugar_destino}}</h5>
+                    <h5 class="card-title">Estado: {{$transporte->estado}}</h5>
                 </div>
                 @php
                 $conductor = $conductores->firstWhere('nombre', $transporte->nombre_conductor);
                 @endphp
+                @if ($conductor)
                 <p class="card-text mb-1"><small class="text-muted">Nombre conductor: {{$conductor->nombre}}</small></p>
                 <p class="card-text mb-1"><small class="text-muted">Vehículo: {{$conductor->vehiculo}}</small></p>
                 <p class="card-text mb-1"><small class="text-muted">Placa: {{$conductor->placa}}</small></p>
+                @else
+                <p class="card-text mb-1"><small class="text-muted">Conductor no encontrado</small></p>
+                @endif
                 <p class="card-text mb-1"><small class="text-muted">Precio: {{$transporte->precio}}</small></p>
                 <div class="d-flex">
                     <a href="{{ url('/Ubicacion') }}" class="btn btn-info btn-sm">Ver Ubicación</a>
-                    <form action="{{ route('formularioCancelacionTransporte') }}" method="GET">
-                        <input type="hidden" name="id" value="{{ $transporte->id }}">
-                        <button type="submit" class="btn btn-danger">Cancelar</button>
-                    </form>
+                    @if ($transporte->estado != 'finalizado')
+                        <form action="{{ route('formularioCancelacionTransporte') }}" method="GET">
+                            <input type="hidden" name="id" value="{{ $transporte->id }}">
+                            <button type="submit" class="btn btn-danger">Cancelar</button>
+                        </form>
+                    @endif
                 </div>
                 </div>
             </div>
