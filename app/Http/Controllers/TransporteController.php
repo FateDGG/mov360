@@ -8,6 +8,7 @@ use Illuminate\Http\Auth;
 use App\Models\Transporte;
 use App\Models\Conductor;
 use App\Models\Tarjeta;
+use Illuminate\Support\Facades\DB;
 
 class TransporteController extends Controller
 {
@@ -15,17 +16,18 @@ class TransporteController extends Controller
     public function showFormulario()
     {
         // Obtener las tarjetas asociadas al usuario autenticado
- // Obtener las tarjetas asociadas al usuario autenticado
         $tarjetas = Tarjeta::where('id_usuario', auth()->id())->get();
 
-        // Obtener todos los conductores disponibles
-        $conductores = Conductor::all();
-        
+        // Obtener los nombres de los conductores que están en viajes activos
+        $nombresConductoresEnViajesActivos = DB::table('transportes')
+            ->where('estado', 'activo')
+            ->pluck('nombre_conductor'); // Asegúrate de que 'nombre_conductor' sea la columna correcta
+
+        // Obtener todos los conductores disponibles cuyos nombres no están en viajes activos
+        $conductores = Conductor::whereNotIn('nombre', $nombresConductoresEnViajesActivos)->get();
+
         // Retornar la vista con las tarjetas y los conductores
         return view('transporte', ['tarjetas' => $tarjetas, 'conductores' => $conductores]);
- 
-        
-        
     }
     public function solicitarTransporte(Request $request)
     {
