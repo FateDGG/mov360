@@ -49,12 +49,12 @@
             </a>
             </li>
             <li>
-                <h1>|</h1>
-            </li>
-            <li class="nav-item carrito">
+                {{-- <h1>|</h1>
+            </li> --}}
+            {{-- <li class="nav-item carrito">
                 <a class="nav-link carrito" href="{{ url('/Carrito') }}">
                   <img src="{{ asset('img/carrito.png') }}" alt="Cart" width="40" height="40">
-              </a>
+              </a> --}}
           </ul>
         
       </div>

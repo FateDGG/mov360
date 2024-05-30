@@ -113,7 +113,7 @@ class CompraController extends Controller
 
         Session::forget('carrito');
         // Aquí puedes procesar los datos adicionales o redirigir a otra página, etc.
-        return redirect('/')->with('success_message', '¡Pedido realizado con éxito!');
+        return redirect('/')->with('success_message', '¡Pago aprobado! Tu pedido ha sido realizado con éxito');
         // Por ejemplo, redirige a una página de pago exitoso
     }
     public function formularioCancelacionPedido(Request $request)
