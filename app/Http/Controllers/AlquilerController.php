@@ -48,7 +48,12 @@ class AlquilerController extends Controller
         $alquiler->id_usuario = $request->input('id_usuario');
         $alquiler->vehiculo_nombre = $request->input('vehiculoNombre');
         $alquiler->vehiculo_modelo = $request->input('vehiculoModelo');
-        $alquiler->precio_total = $request->input('precioTotal');
+        $precioTotal = $request->input('precioTotal');
+        if (is_numeric($precioTotal)) {
+            $alquiler->precio_total = $precioTotal;
+        } else {
+            return redirect('/')->with('error', 'Selecciona todos los datos de tu solicitud.');
+        }
         $alquiler->lugar_recogida = $request->input('lugarRecogida');
         $alquiler->lugar_entrega = $request->input('lugarEntrega');
         $alquiler->fecha_entrega = $request->input('fechaEntrega');
@@ -58,7 +63,7 @@ class AlquilerController extends Controller
         $alquiler->forma_pago = $request->input('formaPago');
         $alquiler->save();
 
-        return redirect('/')->with('success', 'Alquiler guardado correctamente');
+        return redirect('/')->with('success', 'Pago exitoso. Alquiler Confirmado');
     }
 
         public function mostrarFormularioCancelacion(Request $request)

@@ -39,5 +39,38 @@
             @endif
         });
     </script>
+        @if(session('error'))
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#errorModal').modal('show');
+            });
+        </script>
+
+        <!-- Modal -->
+        <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ session('error') }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ESC</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if(session('success'))
+        <script type="text/javascript">
+            alert("{{ session('success') }}");
+        </script>
+    @endif
     </body>
 </html>

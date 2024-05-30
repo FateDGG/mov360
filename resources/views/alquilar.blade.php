@@ -23,28 +23,28 @@
 
         <form id="formularioAlquiler" class="pb-4">
           <div class="form-group">
-            <select class="form-control mb-2" name="devol" id="devol">
+            <select class="form-control mb-2" name="devol" id="devol" required>
               <option>Selecciona el lugar de devolución</option>
               <option>Devolución en el mismo punto</option>
               <option>Otra sucursal</option>
             </select>
 
-            <select class="form-control mb-2" name="edad" id="edad">
+            <select class="form-control mb-2" name="edad" id="edad" required>
               <option>Selecciona la edad del conductor</option>
               <option>Menos de 25</option>
               <option>26-65</option>
               <option>Más de 65</option>
             </select>
 
-            <select class="form-control mb-2" name="aeropuerto" id="aeropuerto">
-              <option>Seleccionar aeropuerto o ciudad</option>
+            <select class="form-control mb-2" name="aeropuerto" id="aeropuerto" required placeholder="Seleccionar aeropuerto o">
+              <option value=''>Seleccionar aeropuerto o ciudad</option>
               @foreach ($aeropuertos as $aeropuerto)
                 <option>{{ $aeropuerto->nombre }}</option>
               @endforeach
             </select>
 
             <div class="d-flex justify-content-between">
-              <input type="date" class="form-control mb-2 calendary" name="recogida" id="recogida" placeholder="lun. 13/5" />
+              <input type="date" class="form-control mb-2 calendary" name="recogida" id="recogida" placeholder="lun. 13/5" required/>
               <select name="hora_recogida" id="hora_r" class="form-control mb-2 timepicker">
                 <option>Selecciona la hora de recogida</option>
                 <?php
@@ -54,7 +54,7 @@
                 }
                 ?>
               </select>
-              <input type="date" class="form-control mb-2 calendary" name="entrega" id="entrega" placeholder="lun. 20/5" />
+              <input type="date" class="form-control mb-2 calendary" name="entrega" id="entrega" placeholder="lun. 20/5" required/>
               <select name="hora_entrega" id="hora_e" class="form-control mb-2 timepicker">
                 <option>Selecciona la hora de entrega</option>
                 <?php

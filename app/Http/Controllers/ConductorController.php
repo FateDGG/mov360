@@ -76,7 +76,7 @@ class ConductorController extends Controller
     
         // Obtener las solicitudes de servicio entrantes y el historial de servicios
         $solicitudesEntrantes = Transporte::where('nombre_conductor', $nombreConductor)->where('estado', 'pendiente')->get();
-        $historialServicios = Transporte::where('nombre_conductor', $nombreConductor)->where('estado', 'completado')->get();
+        $historialServicios = Transporte::where('nombre_conductor', $nombreConductor)->where('estado', 'finalizado')->get();
         $serviciosActivos = Transporte::where('nombre_conductor', $nombreConductor)->where('estado', 'activo')->get();
 
         // Obtener los clientes relacionados con las solicitudes y el historial
