@@ -28,6 +28,8 @@ class ConductorController extends Controller
             'vehicleColor' => 'required|string',
             'vehicleModel' => 'required|string',
             'vehiclePlate' => 'required|string',
+            'password'=> 'required|string',
+            'email' => 'required|string|email|max:255|unique:clientes',
         ]);
 
         // Crear un nuevo conductor con los datos del formulario
@@ -39,6 +41,17 @@ class ConductorController extends Controller
             'vehiculo' => $request->input('vehicleModel'),
             // Añade más campos si es necesario
         ]);
+
+        $cliente = new Cliente();
+        $cliente->nombre = $request->input('driverName');
+        $cliente->telefono = $request->input('phone');
+        $cliente->email = $request->input('email');
+        $cliente->password = bcrypt($request->input('password'));
+        $cliente->role = 'driver';
+        $cliente->documento = null;
+        $cliente->genero= null;
+        $cliente->fechaNac= null;
+        $cliente->save();
 
         // Redirigir a una página de éxito o a donde desees
         return redirect('/AdminConduc')->with('success', 'Conductor agregado exitosamente');

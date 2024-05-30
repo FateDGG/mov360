@@ -30,37 +30,37 @@
        @include("components.navbarAdmin") 
        <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="container-custom col-12 col-md-8 col-lg-6">
-            <h1 class="text-center text-primary">Crear Nueva Empresa</h1>
-            <form method="POST" action="{{ route('crear_empresa') }}">
+            <h1 class="text-center text-primary">Crear Nuevo Restaurante</h1>
+            <form method="POST" action="{{ route('crear_restaurante') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="nit" class="text-primary font-weight-bold">NIT</label>
-                    <input type="text" class="form-control" id="nit" name="nit" placeholder="Enter NIT" required>
+                    <label for="nit" class="text-primary font-weight-bold">Nombre del restaurante</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa el nombre del restaurante" required>
                 </div>
                 <div class="form-group">
-                    <label for="creationDate" class="text-primary font-weight-bold">Creation Date</label>
-                    <input type="date" class="form-control" id="creationDate" name="creation_date" required>
+                    <label for="creationDate" class="text-primary font-weight-bold">Direccion</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa la direccion" required>
                 </div>
                 <div class="form-group">
-                    <label for="legalRepresentative" class="text-primary font-weight-bold">Legal Representative</label>
-                    <input type="text" class="form-control" id="legalRepresentative" name="legal_representative" placeholder="Enter legal representative name" required>
+                    <label for="legalRepresentative" class="text-primary font-weight-bold">Teléfono</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingresa el teléfono" required>
                 </div>
                 <div class="form-group">
-                    <label for="locations" class="text-primary font-weight-bold">Location</label>
-                    <input type="text" class="form-control" id="locations" name="location" placeholder="Enter the company's address" required>
+                    <label for="locations" class="text-primary font-weight-bold">Tipo de Cocina</label>
+                    <input type="text" class="form-control" id="tipo_cocina" name="tipo_cocina" placeholder="Ingresa el tipo de cocina del restaurante" required>
                 </div>
                 <div class="form-group">
-                    <label for="contactEmail" class="text-primary font-weight-bold">Contact Email</label>
-                    <input type="email" class="form-control" id="contactEmail" name="contact_email" placeholder="Enter contact email" required>
+                    <label for="contactEmail" class="text-primary font-weight-bold">Tiempo de espera</label>
+                    <input type="text" class="form-control" id="tiempo_espera" name="tiempo_espera" placeholder="Ingresa el tiempo de espera del restaurante" required>
                 </div>
                 <div class="form-group">
-                    <label for="contactPhone" class="text-primary font-weight-bold">Contact Phone</label>
-                    <input type="tel" class="form-control" id="contactPhone" name="contact_phone" placeholder="Enter contact phone number" required>
+                    <label for="contactPhone" class="text-primary font-weight-bold">URL Foto</label>
+                    <input type="text" class="form-control" id="url_foto" name="url_foto" placeholder="Ingresa la URL de la foto del restaurante" required>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="companyName" class="text-primary font-weight-bold">Company Name</label>
                     <input type="text" class="form-control" id="companyName" name="company_name" placeholder="Enter company name" required>
-                </div>
+                </div> --}}
                 <button type="submit" class="btn btn-primary btn-block mt-4">Crear Empresa</button>
             </form>
         </div>

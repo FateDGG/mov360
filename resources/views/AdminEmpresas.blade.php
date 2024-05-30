@@ -29,7 +29,7 @@
        
        @include("components.navbarAdmin") 
 
-        @include("components.adminEmpresas", ['empresas' => $empresas])
+        @include("components.adminEmpresas", ['empresas' => $empresas], ['restaurantes' => $restaurantes] )
 
        @extends("components.footer")  
        

@@ -151,13 +151,16 @@ Route::get('/CancelarPedido', 'App\Http\Controllers\CompraController@formularioC
 
 Route::post('/cancelarPedido', 'App\Http\Controllers\CompraController@cancelarPedido')->name('cancelarPedido');
 
-Route::get('/AdminEmp', 'App\Http\Controllers\EmpresaController@index')->middleware('AdminLocked');
+Route::get('/AdminMain', 'App\Http\Controllers\EmpresaController@index')->middleware('AdminLocked');
 
 Route::post('/crear_empresa', 'App\Http\Controllers\EmpresaController@store')->name('crear_empresa')->middleware('AdminLocked');
 
 // routes/web.php
 
+Route::post('/crear_restaurante', 'App\Http\Controllers\EmpresaController@storeRestaurante')->name('crear_restaurante')->middleware('AdminLocked');
 Route::delete('/empresas/{id}', 'App\Http\Controllers\EmpresaController@destroy')->name('eliminar_empresa')->middleware('AdminLocked');
+
+Route::delete('/restaurantes/{id}', 'App\Http\Controllers\EmpresaController@destroyRestaurante')->name('eliminar_restaurante')->middleware('AdminLocked');
 
 Route::get('/AdminConduc', 'App\Http\Controllers\ConductorController@index')->middleware('AdminLocked');
 

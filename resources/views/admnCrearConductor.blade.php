@@ -54,6 +54,14 @@
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Número de Teléfono"
                            required>
                 </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="email" name="email"
+                           placeholder="Correo Electrónico" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="password" class="form-control" id="password" name="password"
+                    placeholder="Contraseña" required>
+                </div>
             </div>
             <h3 class="card-subtitle mt-4 mb-2">Información del Vehículo</h3>
             <div class="row g-3">

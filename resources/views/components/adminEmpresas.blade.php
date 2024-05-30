@@ -20,10 +20,10 @@
       <h1 class="text-center text-primary mb-4">Admin Dashboard</h1>
       <div class="card mb-4">
         <div class="card-body">
-          <button class="btn btn-success" onclick="window.location.href='{{ url('/CrearEmpresa') }}'">Create New Business</button>
+          <button class="btn btn-success" onclick="window.location.href='{{ url('/CrearEmpresa') }}'">Añadir Restaurante</button>
         </div>
       </div>
-      <div id="businessList" class="mb-4">
+      {{-- <div id="businessList" class="mb-4">
         <h2 class="text-center text-secondary">Listado de Empresas</h2>  
         @foreach ($empresas as $empresa)
         <div class="card mb-3">
@@ -46,15 +46,16 @@
                 </div>
             </div>
         </div>
-        @endforeach
+        @endforeach --}}
       
         <div id="businessList" class="mb-4">
-          <h2 class="text-center text-secondary">Listado de Empresas</h2>  
+          <h2 class="text-center text-secondary">Listado de Restaurantes</h2>  
           @foreach ($restaurantes as $restaurante)
           <div class="card mb-3">
               <div class="row no-gutters">
                   <div class="col-md-4">
                       <!-- Aquí puedes mostrar la foto de la empresa -->
+                      <img src="{{ asset($restaurante->url_foto) }}" class="card-img-top fixed-size-img" alt="..." style="width: 100%; height: 10rem; object-fit: cover; object-position: center;">
                   </div>
                   <div class="col-md-8">
                       <div class="card-body">
@@ -62,10 +63,10 @@
                           <p class="card-text">Dirección: {{ $restaurante->direccion }}</p>
                           <p class="card-text">Tipo de comida: {{ $restaurante->tipo_cocina }}</p>
                           <!-- Agrega otros detalles de la empresa que desees mostrar -->
-                          <form method="POST" action="{{ route('eliminar_empresa', ['id' => $empresa->id]) }}" style="display: inline;">
+                          <form method="POST" action="{{ route('eliminar_restaurante', ['id' => $restaurante->id]) }}" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta empresa?')">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este restaurante?')">Delete</button>
                           </form>
   
                       </div>

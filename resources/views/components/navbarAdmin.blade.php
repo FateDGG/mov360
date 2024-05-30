@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-color-navbar">
     <div class="container-fluid">
-        <a class="navbar-brand " href="{{ url('/AdminEmp') }}">
+        <a class="navbar-brand " href="{{ url('/AdminMain') }}">
             <img src="{{ asset('img/logo2.png') }}" alt="MOV360" width="160" height="36">
           </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
         
             <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-color" href="{{ url('/AdminEmp') }}">Administrar Negocios</a>
+                <a class="nav-color" href="{{ url('/AdminMain') }}">Administrar Negocios</a>
             </li>
             <li class="nav-item">
                 <a class="nav-color" href="{{ url('/AdminConduc') }}">Administrar Conductores</a>

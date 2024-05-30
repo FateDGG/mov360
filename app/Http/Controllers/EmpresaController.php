@@ -61,4 +61,43 @@ class EmpresaController extends Controller
         // Redirige de regreso a la página de administrador o a donde lo necesites
         return redirect('/AdminEmp')->with('success', 'Empresa eliminada correctamente.');
     }
+    public function destroyRestaurante($id)
+    {
+        // Encuentra la empresa por su ID
+        $restaurante = Restaurante::findOrFail($id);
+
+        // Elimina la empresa de la base de datos
+        $restaurante->delete();
+
+        // Redirige de regreso a la página de administrador o a donde lo necesites
+        return redirect('/AdminEmp')->with('success', 'Restaurante eliminado correctamente.');
+    }
+    public function storeRestaurante(Request $request)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'required|date',
+            'telefono' => 'required|string|max:255',
+            'tipo_cocina' => 'required|string|max:255',
+            'tiempo_espera' => 'required|string|max:255',
+            'url_foto' => 'required|string|max:255',
+        ]);
+
+        // Crear una nueva instancia de Empresa con los datos proporcionados
+        $restaurante = new Restaurante([
+            'nombre' => $request->nombre,
+            'direccion' => $request->direccion,
+            'telefono' => $request->telefono,
+            'tipo_cocina' => $request->tipo_cocina,
+            'tiempo_espera' => $request->tiemmpo_espera,
+            'url_foto' => $request->url_foto,
+        ]);
+
+        // Guardar la nueva empresa en la base de datos
+        $restaurante->save();
+
+        // Redireccionar a una página de confirmación o a otra vista
+        return redirect('/AdminEmp')->with('success', '¡Restaurante añadido correctamente!');
+    }
 }
